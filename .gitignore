@@ -22,3 +22,6 @@ yarn-error.log*
 
 # API-key
 /src/key.js
+
+# SASS
+src/**/*.css
