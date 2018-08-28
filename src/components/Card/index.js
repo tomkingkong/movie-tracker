@@ -13,8 +13,12 @@ class Card extends Component {
   toggleInfo = () => {
     this.setState({toggleInfo: !this.state.toggleInfo});
   }
+
+  render() {
+    const { title, image, rating, description, releaseDate } = this.props;
+    const { toggleInfo } = this.state;
   return (
-    <article className="Card">
+      <article className={`Card  ${toggleInfo ? "show" : "hide"}`} onClick={this.toggleInfo}>
       <img src={image} />
       <h2>{title}</h2>
       <p>{rating}</p>
