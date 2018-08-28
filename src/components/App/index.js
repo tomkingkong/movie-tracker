@@ -3,12 +3,10 @@ import { connect } from 'react-redux';
 
 import { discoverMovies } from '../../Utilities/fetchApi';
 import { addHanksMovies } from '../../actions';
+import ContentRoute from '../../containers/ContentRoute';
 import './App.css';
 
 class App extends Component {
-  constructor() {
-    super();
-  }
 
   async componentDidMount() {
     const hanksMovies = await discoverMovies();
@@ -18,6 +16,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <ContentRoute />
       </div>
     );
   }
