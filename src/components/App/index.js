@@ -23,4 +23,7 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapDispatchToProps = (dispatch) => ({
+  addHanksMovies: (movies) => dispatch(addHanksMovies(movies))
+})
+
