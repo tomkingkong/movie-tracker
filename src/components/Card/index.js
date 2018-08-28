@@ -9,6 +9,10 @@ class Card extends Component {
       toggleInfo: false
     }
   }
+  
+  toggleInfo = () => {
+    this.setState({toggleInfo: !this.state.toggleInfo});
+  }
   return (
     <article className="Card">
       <img src={image} />
