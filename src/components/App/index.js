@@ -27,3 +27,4 @@ const mapDispatchToProps = (dispatch) => ({
   addHanksMovies: (movies) => dispatch(addHanksMovies(movies))
 })
 
+export default connect(null, mapDispatchToProps)(App);
