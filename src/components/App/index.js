@@ -7,12 +7,12 @@ import './App.css';
 
 class App extends Component {
   constructor() {
-    super()
+    super();
   }
 
   async componentDidMount() {
     const hanksMovies = await discoverMovies();
-    console.log(hanksMovies);
+    this.props.addHanksMovies(hanksMovies);
   }
 
   render() {
