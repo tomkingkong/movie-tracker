@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import { discoverMovies } from '../../Utilities/fetchApi';
+import { addHanksMovies } from '../../actions';
 import './App.css';
-import {discoverMovies} from '../../Utilities/fetchApi';
 
 class App extends Component {
   constructor() {
