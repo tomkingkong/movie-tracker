@@ -19,9 +19,18 @@ class Card extends Component {
     const { toggleInfo } = this.state;
   return (
       <article className={`Card  ${toggleInfo ? "show" : "hide"}`} onClick={this.toggleInfo}>
+        <div className="description">
+          <h2>{title}</h2>
+          <p>{description}</p>
+        </div>
       <img src={image} />
-      <h2>{title}</h2>
-      <p>{rating}</p>
+        <h1>{title}</h1>
     </article>
   )
+}       <h1>{title}</h1>
+      </article>
+    )
+  }
 }
+
+export default Card;
