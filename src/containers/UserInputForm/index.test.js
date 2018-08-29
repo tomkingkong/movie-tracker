@@ -13,5 +13,9 @@ describe('UserInputForm', () => {
     expect(wrapper.html()).toMatchSnapshot()
   });
 
-  
+  describe('handleChange', () => {
+    it('should set state when invoked', () => {
+
+    });
+  });
 });
