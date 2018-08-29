@@ -1,4 +1,4 @@
-export const addHanksMovies = (movies) => ({
-  type: 'ADD_HANKS',
+export const displayHanksMovies = (movies) => ({
+  type: 'DISPLAY_HANKS_MOVIES',
   movies
-})
+});  

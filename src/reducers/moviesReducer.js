@@ -1,8 +1,8 @@
-export const moviesReducer = (state = [], action) => {
-  switch(action.type) {
-    case 'ADD_HANKS':
-      return [...action.movies];
+export const moviesReducer = (state=[], action) => {
+  switch (action.type) {
+    case 'DISPLAY_HANKS_MOVIES':
+      return action.movies
     default:
-      return state;
+      return state
   }
-}
+};

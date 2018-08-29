@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { discoverMovies } from '../../Utilities/fetchApi';
-import { addHanksMovies } from '../../actions';
+import { displayHanksMovies } from '../../actions';
 import ContentRoute from '../../containers/ContentRoute';
 import './App.css';
 
 class App extends Component {
 
   async componentDidMount() {
+    const { displayHanksMovies } = this.props
     const hanksMovies = await discoverMovies();
-    this.props.addHanksMovies(hanksMovies);
+    displayHanksMovies(hanksMovies);
   }
 
   render() {
@@ -23,7 +24,7 @@ class App extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-  addHanksMovies: (movies) => dispatch(addHanksMovies(movies))
+  displayHanksMovies: (movies) => dispatch(displayHanksMovies(movies))
 })
 
 export default connect(null, mapDispatchToProps)(App);

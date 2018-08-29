@@ -15,7 +15,7 @@ class ContentRoute extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  movies: state.hanksMovies
+  movies: state.movies
 })
 
 export default connect(mapStateToProps, null)(ContentRoute);
