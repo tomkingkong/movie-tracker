@@ -3,6 +3,6 @@ export const moviesReducer = (state = [], action) => {
     case 'DISPLAY_HANKS_MOVIES':
       return action.movies;
     default:
-      return state;
+      return state
   }
-}
+};

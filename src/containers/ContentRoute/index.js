@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+
 import { discoverMovies } from '../../Utilities/fetchApi';
 import { displayHanksMovies } from '../../actions';
-
 import { MoviesContainer } from '../../components/MoviesContainer/';
 
 export class ContentRoute extends Component {

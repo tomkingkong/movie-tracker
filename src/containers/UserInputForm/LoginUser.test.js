@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import LoginUser from './LoginUser';
+import LogInUser from './LogInUser';
 
 describe('LoginUser', () => {
   describe('LoginUser Component', () => {

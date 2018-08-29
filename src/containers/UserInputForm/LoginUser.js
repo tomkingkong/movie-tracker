@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { userLogIn } from '../../Utilities/fetchApi';
+
 // import './UserInputForm.css';
+import { userLogIn } from '../../Utilities/fetchApi';
 import { loginUser } from '../../actions';
 import { Link } from 'react-router-dom';
  
@@ -15,21 +16,21 @@ export class LoginUser extends Component {
   }
 
   handleChange = (e) => {
-    const {value, name} = e.target;
+    const { value, name } = e.target;
     this.setState({
       [name] : value
     });
   }
 
   handleSubmit = (e) => {
-    const {login} = this.props;
-    e.preventDefault();
-    userLogIn(this.state)
-    // login(this.state);
+    const { login, history } = this.props;
+    userLogIn(this.state);
+    login(this.state);
+    history.push('/user');
   }
 
   render() {
-    const {email, password} = this.state;
+    const { email, password } = this.state;
     return (
       <form onSubmit={this.handleSubmit}>
         <input 
