@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import UserInputForm from '.';
+import LoginUser from './LoginUser';
 
-describe('UserInputForm', () => {
-  describe('UserInputForm Component', () => {
+describe('LoginUser', () => {
+  describe('LoginUser Component', () => {
     let wrapper;
 
     beforeEach(() => {
-      wrapper = shallow(<UserInputForm />);
+      wrapper = shallow(<LoginUser />);
     })
 
     it('should match snapshot', () => {
