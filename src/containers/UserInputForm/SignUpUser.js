@@ -23,10 +23,10 @@ export class SignUpUser extends Component {
   }
 
   handleSubmit = (e) => {
-    const {login} = this.props;
-    e.preventDefault();
+    const { login, history } = this.props;
     userSignUp(this.state)
-    // login(this.state);
+    login(this.state);
+    history.push('/user')
   }
 
   render() {
