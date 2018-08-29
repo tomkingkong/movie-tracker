@@ -28,7 +28,7 @@ describe('UserInputForm', () => {
   })
 
   describe('mapStateToProps', () => {
-
+    
   });
 
   describe('mapDispatchToProps', () => {
