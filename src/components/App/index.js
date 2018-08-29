@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import ContentRoute from '../../containers/ContentRoute/';
-import LoginUser from '../../containers/UserInputForm/LoginUser';
+import SignUpUser from '../../containers/UserInputForm/SignUpUser';
 import './App.css';
 
 class App extends Component {
@@ -8,7 +8,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <LoginUser />
+        <SignUpUser />
         <ContentRoute />
       </div>
     );

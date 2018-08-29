@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { userLogIn } from '../../Utilities/fetchApi';
 // import './UserInputForm.css';
 import { loginUser } from '../../actions';
 import { Link } from 'react-router-dom';
@@ -23,7 +24,8 @@ export class LoginUser extends Component {
   handleSubmit = (e) => {
     const {login} = this.props;
     e.preventDefault();
-    login(this.state);
+    userLogIn(this.state)
+    // login(this.state);
   }
 
   render() {
@@ -31,7 +33,8 @@ export class LoginUser extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input 
-          placeholder='User Name'
+          type='email'
+          placeholder='Email'
           value={email}
           name='email'
           onChange={this.handleChange}
