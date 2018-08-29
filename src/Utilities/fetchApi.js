@@ -23,12 +23,41 @@ export const deleteUserFavorite = (user, id) =>{
 
 }
 
-export const addNewUser = (user) => {
+export const userSignUp =  async (user) => {
+  const url = "http://localhost:3000/api/users/new";
 
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const login = await response.json()
+  } catch (error) {
+    console.log(error)
+    return 'Email has already been taken.'
+  }
 }
 
-export const userSignIn = (user) => {
+export const userLogIn = async (user) => {
+  const url = "http://localhost:3000/api/users";
 
+  try {
+    const response = await fetch(url, {
+      method: 'POST',
+      body: JSON.stringify(user),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const login = await response.json()
+    console.log(login);
+  } catch (error) {
+    console.log(error);
+    return 'Email and Password do not match.'
+  }
 }
 
 
