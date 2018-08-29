@@ -1,7 +1,7 @@
 import React from 'react';
 
 import Card from '../Card';
-import './Container.css';
+import './MoviesContainer.css';
 
 export const MoviesContainer = ({movies}) => {
   if (!movies) return (<section></section>)
@@ -9,7 +9,7 @@ export const MoviesContainer = ({movies}) => {
     return (<Card {...movie} key={movie.title+i} />)
   })
   return (
-    <section className="Container">
+    <section className="MoviesContainer">
       {displayMovieCards}
     </section>
   )

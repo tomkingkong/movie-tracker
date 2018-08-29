@@ -1,0 +1,67 @@
+.Card {
+  cursor: pointer;
+  box-shadow: 0rem 0.2rem 0.5rem #2c30359c;
+  position: relative;
+  overflow: hidden;
+  margin: 1rem 0.5rem;
+  height: 20rem;
+  width: 100%;
+  min-width: 20rem;
+  max-width: 12rem;
+  transform: all 0.2s linear;
+}
+
+.Card img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+
+.Card h1 {
+  color: #fff;
+  background: #23282dcb;
+  font-size: 150%;
+  position: absolute;
+  top: 25rem;
+  padding: 1rem;
+  margin: 0;
+  width: inherit;
+  z-index: 99;
+  text-align: center;
+  transition: all 0.25s linear;
+}
+
+.Card:hover h1 {
+  top: 10rem;
+  bottom: -2rem;
+}
+
+.description {
+  color: #000;
+  background: #fff;
+  box-shadow: 0.5rem 0 0.6rem #37434f;
+  text-align: justify;
+  padding: 1rem;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  transition: all 0.20s linear;
+}
+
+.show .description {
+  top: 0rem;
+}
+
+.show h1 {
+  display: none;
+}
+
+.hide .description {
+  top: 25rem;
+}
+
+.hide h1 {
+  display: block;
+}
