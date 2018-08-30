@@ -15,9 +15,18 @@ export const fetchUserFavorites = (user) => {
 
 }
 
-export const addUserFavorite = (user, id) =>{
+export const addUserFavorite = (userId, movie) =>{
+  const url = 'http://localhost:3000/api/users/favorites/new';
 
-}
+  fetch(url, {
+    method: 'POST',
+    body: JSON.stringify({
+      user_id: userId,
+      ...movie
+    }),
+    headers: {'Content-Type': 'application/json'} 
+  });
+};
 
 export const deleteUserFavorite = (user, id) =>{
 
@@ -53,7 +62,7 @@ export const userLogIn = async (user) => {
       }
     });
     const login = await response.json()
-    console.log(login);
+    return login
   } catch (error) {
     console.log(error);
     return 'Email and Password do not match.'
