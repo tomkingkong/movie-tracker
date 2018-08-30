@@ -17,7 +17,7 @@ export class ContentRoute extends Component {
   render() {
     const { movies } = this.props;
     return (
-      <Route exact path='/' render={() => (<MoviesContainer movies={movies}/>)} />
+      <Route exact path='/' render={({history}) => (<MoviesContainer movies={movies} history={history}/>)} />
     )
   }
 }
