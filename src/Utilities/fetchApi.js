@@ -44,8 +44,8 @@ export const userSignUp =  async (user) => {
       }
     });
     const login = await response.json()
+    return login
   } catch (error) {
-    console.log(error)
     return 'Email has already been taken.'
   }
 }

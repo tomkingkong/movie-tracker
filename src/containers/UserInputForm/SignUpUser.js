@@ -22,10 +22,13 @@ export class SignUpUser extends Component {
     });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
+    e.preventDefault();
     const { login, history } = this.props;
-    userSignUp(this.state)
-    login(this.state);
+    const userInfo = await userSignUp(this.state);
+    const newUser = {...this.state, id: userInfo.id}
+
+    login(newUser);
     history.push('/user')
   }
 
@@ -34,12 +37,14 @@ export class SignUpUser extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input 
+          required
           placeholder='User Name'
           value={name}
           name='name'
           onChange={this.handleChange}
         />
         <input 
+          required
           type='email'
           placeholder='Email'
           value={email}
@@ -47,6 +52,7 @@ export class SignUpUser extends Component {
           onChange={this.handleChange}
         />
         <input 
+          required
           placeholder='Password'
           value={password}
           name='password'

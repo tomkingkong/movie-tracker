@@ -35,13 +35,15 @@ export class LoginUser extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input 
+          required
           type='email'
           placeholder='Email'
           value={email}
           name='email'
           onChange={this.handleChange}
         />
-        <input 
+        <input
+          required
           placeholder='Password'
           value={password}
           name='password'
