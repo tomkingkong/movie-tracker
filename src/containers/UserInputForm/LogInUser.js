@@ -22,10 +22,11 @@ export class LoginUser extends Component {
     });
   }
 
-  handleSubmit = (e) => {
+  handleSubmit = async (e) => {
+    e.preventDefault();
     const { login, history } = this.props;
-    userLogIn(this.state);
-    login(this.state);
+    const userInfo = await userLogIn(this.state);
+    login(userInfo.data);
     history.push('/user');
   }
 
