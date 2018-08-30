@@ -3,6 +3,11 @@ export const displayHanksMovies = (movies) => ({
   movies
 })
 
+export const updateFavorites = (movies) => ({
+  type: 'UPDATE_FAVORITES',
+  movies
+})
+
 export const loginUser = (user) => ({
   type: 'LOGIN_USER',
   user

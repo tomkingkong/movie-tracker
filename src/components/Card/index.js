@@ -18,15 +18,25 @@ class Card extends Component {
   }
 
   toggleFavorite = () => {
-    const {user, movie} = this.props;
-    
-    addUserFavorite(user.id, movie)
+    const { user, movie, history, favorites } = this.props;
+    const userFavorites = favorites.map(fav => fav.movie_id);
+    if (!user.name) {
+      history.push('/signup')
+      console.log('Sign up to add a favorite!')
+      return
+    }
+    if (userFavorites.includes(movie.movie_id)) {
+      // remove favorite
+      return
+    } else {
+      addUserFavorite(user.id, movie);
+    }
     this.setState({favorite: !this.state.favorite})
   }
 
   render() {
     const { title, poster_path, vote_average, overview, release_date } = this.props.movie;
-    const { toggleInfo } = this.state;
+    const { toggleInfo, favorite } = this.state;
     return (
       <article className={`Card  ${toggleInfo ? "show" : "hide"}`} onClick={this.toggleInfo}>
         <div className="description">
@@ -35,14 +45,15 @@ class Card extends Component {
         </div>
         <img src={poster_path} />
         <h1>{title}</h1>
-        <button onClick={this.toggleFavorite}>FAV</button>
+        <button onClick={this.toggleFavorite}>{favorite ? '★' : '☆'}</button>
       </article>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-  user: state.user
+  user: state.user,
+  favorites: state.favorites
 })
 
 export default connect(mapStateToProps, null)(Card)

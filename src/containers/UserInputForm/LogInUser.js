@@ -2,8 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 // import './UserInputForm.css';
-import { userLogIn } from '../../Utilities/fetchApi';
-import { loginUser } from '../../actions';
+import { userLogIn, fetchUserFavorites } from '../../Utilities/fetchApi';
+import { loginUser, updateFavorites } from '../../actions';
 import { Link } from 'react-router-dom';
  
 export class LoginUser extends Component {
@@ -24,8 +24,10 @@ export class LoginUser extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { login, history } = this.props;
+    const { login, history, updateFavorites } = this.props;
     const userInfo = await userLogIn(this.state);
+    const userFavorites = await fetchUserFavorites(userInfo.data.id);
+    updateFavorites(userFavorites.data);
     login(userInfo.data);
     history.push('/user');
   }
@@ -66,7 +68,8 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  login: (user) => dispatch(loginUser(user))
+  login: (user) => dispatch(loginUser(user)),
+  updateFavorites: (movies) => dispatch(updateFavorites(movies))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginUser);
