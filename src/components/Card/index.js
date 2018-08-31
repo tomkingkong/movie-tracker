@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { addUserFavorite } from '../../Utilities/fetchApi';
+import { addUserFavorite, removeUserFavorite } from '../../Utilities/fetchApi';
 
 import './Card.css';
 import { connect } from 'react-redux';
@@ -26,8 +26,8 @@ class Card extends Component {
       return
     }
     if (userFavorites.includes(movie.movie_id)) {
-      // remove favorite
-      return
+      console.log(user.id, movie.movie_id)
+      removeUserFavorite(user.id, movie.movie_id)
     } else {
       addUserFavorite(user.id, movie);
     }

@@ -35,8 +35,17 @@ export const addUserFavorite = (userId, movie) =>{
   });
 };
 
-export const deleteUserFavorite = (user, id) =>{
-
+export const removeUserFavorite = async (userId, movieId) =>{
+  console.log(userId, movieId)
+  const url = `http://localhost:3000/api/users/${userId}/favorites/${movieId}`;
+  return await fetch(url, {
+    method: 'DELETE',
+    body: JSON.stringify({
+      user_id: userId,
+      movie_id: movieId
+    }),
+    headers: {'Content-Type': 'application/json'} 
+  })
 }
 
 export const userSignUp =  async (user) => {
