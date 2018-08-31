@@ -6,7 +6,10 @@ export const displayHanksMovies = (movies) => ({
 export const updateFavorites = (movies) => ({
   type: 'UPDATE_FAVORITES',
   movies
-})
+export const addFavorite = (movie) => ({
+  type: 'ADD_FAVORITE',
+  movie
+});
 
 export const loginUser = (user) => ({
   type: 'LOGIN_USER',

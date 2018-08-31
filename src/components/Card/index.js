@@ -18,7 +18,7 @@ class Card extends Component {
   }
 
   toggleFavorite = () => {
-    const { user, movie, history, favorites } = this.props;
+    const { user, movie, history, favorites, addFavoriteToStore, removeFavoriteFromStore } = this.props;
     const userFavorites = favorites.map(fav => fav.movie_id);
     if (!user.name) {
       history.push('/signup')
@@ -26,8 +26,8 @@ class Card extends Component {
       return
     }
     if (userFavorites.includes(movie.movie_id)) {
-      console.log(user.id, movie.movie_id)
-      removeUserFavorite(user.id, movie.movie_id)
+      removeFavoriteFromStore(movie.movie_id);
+      removeUserFavorite(user.id, movie.movie_id);
     } else {
       addUserFavorite(user.id, movie);
     }
