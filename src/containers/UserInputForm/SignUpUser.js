@@ -37,13 +37,15 @@ export class SignUpUser extends Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <input 
+          className='name-input'
           required
           placeholder='User Name'
           value={name}
           name='name'
           onChange={this.handleChange}
         />
-        <input 
+        <input
+          className='email-input' 
           required
           type='email'
           placeholder='Email'
@@ -51,7 +53,8 @@ export class SignUpUser extends Component {
           name='email'
           onChange={this.handleChange}
         />
-        <input 
+        <input
+          className='password-input' 
           required
           placeholder='Password'
           value={password}
