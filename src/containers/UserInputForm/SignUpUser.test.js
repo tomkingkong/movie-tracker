@@ -61,4 +61,16 @@ describe('SignUpUser', () => {
       });
     });
   });
+  describe('mapStateToProps', () => {
+    it('should return an object with an array of movies', () => {
+      const mockState = {
+        movies: [{}],
+        bingo: 'bingo'
+      };
+      const expected = {movies: [{}]}
+      const mappedProps = mapStateToProps(mockState);
+
+      expect(mappedProps).toEqual(expected);
+    })
+  })
 });
