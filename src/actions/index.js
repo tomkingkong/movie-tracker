@@ -11,11 +11,16 @@ export const addFavorite = (movie) => ({
   movie
 });
 
+export const removeFavorite = (movieId) => ({
+  type: 'REMOVE_FAVORITE',
+  movieId
+});
+
 export const loginUser = (user) => ({
   type: 'LOGIN_USER',
   user
-})
+});
 
 export const logoutUser = () => ({
   type: 'LOGOUT_USER'
-})
+});
