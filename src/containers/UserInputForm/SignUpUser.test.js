@@ -49,5 +49,16 @@ describe('SignUpUser', () => {
         expect(wrapper.state().email).toBe('wil@yahoo.com');
       });
     });
+
+    describe('handleSubmit', () => {
+      it('should invoke handleSubmit when form is submitted', () => {
+        const spy = spyOn(wrapper.instance(), 'handleSubmit');
+        const mockEvent = {preventDefault: jest.fn()};
+        wrapper.instance().forceUpdate();
+
+        wrapper.find('form').simulate('submit', mockEvent);
+        expect(spy).toHaveBeenCalled();
+      });
+    });
   });
 });
