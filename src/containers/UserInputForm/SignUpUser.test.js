@@ -23,6 +23,16 @@ describe('SignUpUser', () => {
         wrapper.find('.name-input').simulate('change', mockEvent);
         expect(spy).toHaveBeenCalled();
       });
+
+      it('should be invoked when email is changed', () => {
+        const spy = spyOn(wrapper.instance(), 'handleChange');
+        wrapper.instance().forceUpdate();
+        const mockEvent = {target: { name: 'email', value: 'wil@yahoo.com'}};
+
+        wrapper.find('.email-input').simulate('change', mockEvent);
+        expect(spy).toHaveBeenCalled();
+      });
+
       it('should set state when invoked', () => {
         const mockEvent = {target: { name: 'email', value: 'wil@yahoo.com'}}
 
