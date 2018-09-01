@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { SignUpUser, mapDispatchToProps } from './SignUpUser';
-import { loginUser } from '../../actions';
+import { loginUser, alertUser } from '../../actions';
 
 describe('SignUpUser', () => {
   describe('SignUpUser Component', () => {
@@ -75,6 +75,16 @@ describe('SignUpUser', () => {
       mappedProps.login(mockUser)
 
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
-    })
-  })
+    });
+
+    it('should dispatch alertUser action when alertUser is invoked', () => {
+      const mockMessage = { alert: 'Email has already been taken.' };
+      const mockDispatch = jest.fn();
+      const actionToDispatch = alertUser(mockMessage);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.alertUser(mockMessage);
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  });
 });
