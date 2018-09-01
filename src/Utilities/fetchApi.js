@@ -61,7 +61,10 @@ export const userSignUp =  async (user) => {
     const login = await response.json();
     return login;
   } catch (error) {
-    return 'Email has already been taken.';
+    return {
+      ...error,
+      alert: 'Email has already been taken.'
+    };
   }
 }
 
@@ -78,8 +81,10 @@ export const userLogIn = async (user) => {
     const login = await response.json();
     return login;
   } catch (error) {
-    console.log(error);
-    return 'Email and Password do not match.';
+    return {
+      ...error, 
+      alert: 'Email and Password do not match.'
+    };
   }
 }
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
 
 import SignUpUser from '../../containers/UserInputForm/SignUpUser';
 import LogInUser from '../../containers/UserInputForm/LogInUser';
@@ -14,3 +14,5 @@ export const FormRoute = () => {
     </Switch>
   )
 }
+
+export default withRouter(FormRoute);

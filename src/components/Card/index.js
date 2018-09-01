@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { addUserFavorite, removeUserFavorite } from '../../Utilities/fetchApi';
+import { removeFavorite, addFavorite } from '../../actions';
 
 import './Card.css';
 import { connect } from 'react-redux';
@@ -18,17 +19,17 @@ class Card extends Component {
   }
 
   toggleFavorite = () => {
-    const { user, movie, history, favorites } = this.props;
+    const { user, movie, history, favorites, addFavoriteToStore, removeFavoriteFromStore } = this.props;
     const userFavorites = favorites.map(fav => fav.movie_id);
     if (!user.name) {
       history.push('/signup')
-      console.log('Sign up to add a favorite!')
       return
     }
     if (userFavorites.includes(movie.movie_id)) {
-      console.log(user.id, movie.movie_id)
-      removeUserFavorite(user.id, movie.movie_id)
+      removeFavoriteFromStore(movie.movie_id);
+      removeUserFavorite(user.id, movie.movie_id);
     } else {
+      addFavoriteToStore(movie);
       addUserFavorite(user.id, movie);
     }
     this.setState({favorite: !this.state.favorite})
@@ -56,5 +57,10 @@ const mapStateToProps = (state) => ({
   favorites: state.favorites
 })
 
-export default connect(mapStateToProps, null)(Card)
+const mapDispatchToProps = (dispatch) => ({
+  addFavoriteToStore: (movie) => dispatch(addFavorite(movie)),
+  removeFavoriteFromStore: (movieId) => dispatch(removeFavorite(movieId))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Card)
 
