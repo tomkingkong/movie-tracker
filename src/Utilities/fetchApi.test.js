@@ -25,5 +25,39 @@ describe('fetchApi', () => {
 
       expect(window.fetch).toHaveBeenCalledWith(expected)
     })
+  describe('fetchUserFavorites', () => {
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        json: () => Promise.resolve(hanksCredits)
+      }))
   })
+    it('should be invoked with correct params', async () => {
+      const expected = `http://localhost:3000/api/users/1/favorites`;
+
+      await fetchUserFavorites(1);
+
+      expect(window.fetch).toHaveBeenCalledWith(expected);
+    });
 })
+    it.skip('should return an object if status code ok', async () => {
+      const expected = hanksCredits;
+
+      await expect(discoverMovies()).resolves.toEqual(expected)
+    })
+  });
+
+  describe('fetchUserFavorites', () => {
+    beforeEach(() => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        json: () => Promise.resolve(hanksCredits)
+      }))
+    })
+    it('should be invoked with correct params', async () => {
+      const expected = `http://localhost:3000/api/users/1/favorites`;
+
+      await fetchUserFavorites(1);
+
+      expect(window.fetch).toHaveBeenCalledWith(expected);
+    });
+  })
+});
