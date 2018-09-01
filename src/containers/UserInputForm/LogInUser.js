@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 // import './UserInputForm.css';
 import { userLogIn, fetchUserFavorites } from '../../Utilities/fetchApi';
 import { loginUser, updateFavorites, alertUser } from '../../actions';
-import { Link, withRouter } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import Alert from '../Alert';
  
 export class LoginUser extends Component {
@@ -58,12 +58,9 @@ export class LoginUser extends Component {
             onChange={this.handleChange}
           />
           <button>Login</button>
-          <Link to='/signup' onClick={() => alertUser('')}>
-            <input 
-              value='Sign Up'
-              type='button'
-            />
-          </Link>
+          <NavLink className="NavLink" to='/signup' onClick={() => alertUser('')}>
+            Sign Up
+          </NavLink>
         </form>
         <Alert />
       </div>
