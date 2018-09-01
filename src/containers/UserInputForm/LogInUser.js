@@ -3,8 +3,9 @@ import {connect} from 'react-redux';
 
 // import './UserInputForm.css';
 import { userLogIn, fetchUserFavorites } from '../../Utilities/fetchApi';
-import { loginUser, updateFavorites } from '../../actions';
-import { Link } from 'react-router-dom';
+import { loginUser, updateFavorites, alertUser } from '../../actions';
+import { Link, withRouter } from 'react-router-dom';
+import Alert from '../Alert';
  
 export class LoginUser extends Component {
   constructor() {
@@ -24,8 +25,11 @@ export class LoginUser extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { login, history, updateFavorites } = this.props;
+    const { login, history, updateFavorites, alertUser } = this.props;
     const userInfo = await userLogIn(this.state);
+    if (userInfo.alert) {
+      return alertUser(userInfo.alert)
+    }
     const userFavorites = await fetchUserFavorites(userInfo.data.id);
     updateFavorites(userFavorites.data);
     login(userInfo.data);
@@ -34,31 +38,35 @@ export class LoginUser extends Component {
 
   render() {
     const { email, password } = this.state;
+    const { alertUser } = this.props;
     return (
-      <form onSubmit={this.handleSubmit}>
-        <input 
-          required
-          type='email'
-          placeholder='Email'
-          value={email}
-          name='email'
-          onChange={this.handleChange}
-        />
-        <input
-          required
-          placeholder='Password'
-          value={password}
-          name='password'
-          onChange={this.handleChange}
-        />
-        <button>Login</button>
-        <Link to='/signup'>
+      <div>
+        <form onSubmit={this.handleSubmit}>
           <input 
-            value='Sign Up'
-            type='button'
+            required
+            type='email'
+            placeholder='Email'
+            value={email}
+            name='email'
+            onChange={this.handleChange}
           />
-        </Link>
-      </form>
+          <input
+            required
+            placeholder='Password'
+            value={password}
+            name='password'
+            onChange={this.handleChange}
+          />
+          <button>Login</button>
+          <Link to='/signup' onClick={() => alertUser('')}>
+            <input 
+              value='Sign Up'
+              type='button'
+            />
+          </Link>
+        </form>
+        <Alert />
+      </div>
     )
   }
 }
@@ -69,7 +77,8 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   login: (user) => dispatch(loginUser(user)),
-  updateFavorites: (movies) => dispatch(updateFavorites(movies))
+  updateFavorites: (movies) => dispatch(updateFavorites(movies)),
+  alertUser: (message) => dispatch(alertUser(message))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginUser);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginUser));

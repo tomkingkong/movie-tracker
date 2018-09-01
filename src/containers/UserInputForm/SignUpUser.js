@@ -25,16 +25,19 @@ export class SignUpUser extends Component {
 
   handleSubmit = async (e) => {
     e.preventDefault();
-    const { login, history } = this.props;
+    const { login, history, alertUser } = this.props;
     const userInfo = await userSignUp(this.state);
+    if (userInfo.alert) {
+      return alertUser(userInfo.alert)
+    }
     const newUser = {...this.state, id: userInfo.id}
-
     login(newUser);
     history.push('/user')
   }
 
   render() {
     const {email, password, name} = this.state;
+    const { alertUser } = this.props;
     return (
       <div className="signup-cont">
         <form onSubmit={this.handleSubmit}>
@@ -64,7 +67,7 @@ export class SignUpUser extends Component {
             onChange={this.handleChange}
           />
           <button>Sign Up</button>
-          <Link to='/'>
+          <Link to='/' onClick={() => alertUser('')}>
             <input
               value='Login'
               type='button'

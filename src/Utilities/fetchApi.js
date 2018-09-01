@@ -49,22 +49,18 @@ export const removeUserFavorite = async (userId, movieId) =>{
 }
 
 export const userSignUp =  async (user) => {
-  try {
-    const url = "http://localhost:3000/api/users/new";
-    const response = await fetch(url, {
-      method: 'POST',
-      body: JSON.stringify(user),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    });
-    const login = await response.json();
-    return login;
-  } catch (error) {
-    return {
-      ...error,
-      alert: 'Email has already been taken.'
-    };
+  const url = "http://localhost:3000/api/users/new";
+  const response = await fetch(url, {
+    method: 'POST',
+    body: JSON.stringify(user),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  if (response.ok) {
+    return await response.json()
+  } else {
+    return {alert: 'Email has already been taken.'}
   }
 }
 
