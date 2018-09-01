@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { addUserFavorite, removeUserFavorite } from '../../Utilities/fetchApi';
-import { removeFavorite, addFavorite} from '../../actions';
+import { removeFavorite, addFavorite } from '../../actions';
 
 import './Card.css';
 import { connect } from 'react-redux';
@@ -23,7 +23,6 @@ class Card extends Component {
     const userFavorites = favorites.map(fav => fav.movie_id);
     if (!user.name) {
       history.push('/signup')
-      console.log('Sign up to add a favorite!')
       return
     }
     if (userFavorites.includes(movie.movie_id)) {
