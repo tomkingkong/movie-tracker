@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import { SignUpUser, mapDispatchToProps } from './SignUpUser';
 import { loginUser, alertUser } from '../../actions';
+import { debug } from 'util';
 
 describe('SignUpUser', () => {
   describe('SignUpUser Component', () => {
@@ -59,6 +60,16 @@ describe('SignUpUser', () => {
 
         wrapper.find('form').simulate('submit', mockEvent);
         expect(spy).toHaveBeenCalled();
+      });
+
+      it('should invoke alertUser if userInfo has alert', () => {
+        const mockAlertUser = jest.fn();
+        const mockEvent = { preventDefault: jest.fn() }
+        wrapper = shallow(<SignUpUser alertUser={mockAlertUser} />);
+        wrapper.setState({userInfo: {alert: 'bingo'}});
+        wrapper.instance().handleSubmit(mockEvent)
+
+        expect(mockAlertUser).toHaveBeenCalled()
       });
     });
   });
