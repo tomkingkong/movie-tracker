@@ -2,15 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { alertUser } from '../../actions';
 
-const Alert = ({alert}) => {
+const Alert = ({ alertMsg }) => {
   return (
-    <h3>{alert}</h3>
+    <h4>{ alertMsg }</h4>
   )
 }
 
-const mapStateToProps = (state) => ({
-  alert: state.alertMsg
-})
+const mapStateToProps = ({ alertMsg }) => ({ alertMsg })
 
 const mapDispatchToProps = (dispatch) => ({
   alertUser: (message) => dispatch(alertUser(message))

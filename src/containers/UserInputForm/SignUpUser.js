@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { userSignUp } from '../../Utilities/fetchApi';
-import Alert from '../../containers/Alert';
-// import './UserInputForm.css';
-import { loginUser, alertUser } from '../../actions';
 import { NavLink } from 'react-router-dom';
+
+import './Navigation.css';
+import { userSignUp } from '../../Utilities/fetchApi';
+import { loginUser, alertUser } from '../../actions';
+import Alert from '../../containers/Alert';
  
 export class SignUpUser extends Component {
   constructor() {
@@ -68,11 +69,11 @@ export class SignUpUser extends Component {
             onChange={this.handleChange}
           />
           <button>Sign Up</button>
-          <NavLink className="NavLink" to='/login' onClick={() => alertUser('')}>
-            If you already have an account, Log In here!
-          </NavLink>
         </form>
         <Alert />
+        <NavLink className="NavLink" to='/login' onClick={() => alertUser('')}>
+          If you already have an account, Log In here!
+        </NavLink>
       </div>
     )
   }

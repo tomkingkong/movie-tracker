@@ -2,19 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import './Home.css';
-import { logoutUser, displayFavorites, displayHanksMovies } from '../../actions';
+import './Navigation.css';
+import { logoutUser } from '../../actions';
 
 export const UserNav = (props) => {
-  const { logout, displayFavorites, favorites, movies } = props;
+  const { logout, user } = props;
   return (
     <div className="NavBar">
-      <p className="tooltip" data-tooltip="Select your favorite Tom Hanks movies below!">?</p>
-      <Link to="/favorites">
-        <button onClick={() => displayFavorites(favorites)}>Favorites</button>
+      <p className="tooltip" data-tooltip="Select your favorite Tom Hanks movies!">?</p>
+      <h3>{user.name}</h3>
+      <Link to="/favorites" className="favorites btn">
+        Favorites ★
       </Link>
-      <Link to="/user">
-        <button onClick={() => displayHanksMovies(movies)}>Discover Hanks Movies</button>
+      <Link to="/user" className="discover btn">
+        Discover Hanks Movies
       </Link>
       <Link to="/" replace>
         <button onClick={logout}>Log Out</button>
@@ -23,15 +24,10 @@ export const UserNav = (props) => {
   )
 }
 
-const mapStateToProps = ({favorites, movies}) => ({
-  favorites,
-  movies
-})
+export const mapStateToProps = ({ user }) => ({ user });
 
-const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logoutUser()), 
-  displayFavorites: (movies) => dispatch(displayFavorites(movies)),
-  displayHanksMovies: (movies) => dispatch(displayHanksMovies(movies))
+export const mapDispatchToProps = (dispatch) => ({
+  logout: () => dispatch(logoutUser())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserNav)
