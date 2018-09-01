@@ -1,6 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SignUpUser, mapStateToProps, mapDispatchToProps } from './SignUpUser';
+import { SignUpUser, mapDispatchToProps } from './SignUpUser';
+import { loginUser } from '../../actions';
 
 describe('SignUpUser', () => {
   describe('SignUpUser Component', () => {
@@ -11,7 +12,7 @@ describe('SignUpUser', () => {
     });
 
     it('should match snapshot', () => {
-      expect(wrapper.html()).toMatchSnapshot()
+      expect(wrapper).toMatchSnapshot()
     });
 
     describe('handleChange', () => {
@@ -61,16 +62,19 @@ describe('SignUpUser', () => {
       });
     });
   });
-  describe('mapStateToProps', () => {
-    it('should return an object with an array of movies', () => {
-      const mockState = {
-        movies: [{}],
-        bingo: 'bingo'
+  describe('mapDispatchToProps', () => {
+    it('should dispatch loginUser action when login is invoked', () => {
+      const mockUser = {
+        name: 'wil',
+        email: 'a@a',
+        password: 'wil'
       };
-      const expected = {movies: [{}]}
-      const mappedProps = mapStateToProps(mockState);
+      const mockDispatch = jest.fn();
+      const actionToDispatch = loginUser(mockUser)
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.login(mockUser)
 
-      expect(mappedProps).toEqual(expected);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     })
   })
 });

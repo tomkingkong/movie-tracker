@@ -78,13 +78,9 @@ export class SignUpUser extends Component {
   }
 }
 
-export const mapStateToProps = (state) => ({ 
-  currentUser: state.user 
-})
-
 export const mapDispatchToProps = (dispatch) => ({
   login: (user) => dispatch(loginUser(user)),
   alertUser: (message) => dispatch(alertUser(message))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpUser);
+export default connect(null, mapDispatchToProps)(SignUpUser);
