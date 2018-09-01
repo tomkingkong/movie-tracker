@@ -1,0 +1,449 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUpUser SignUpUser Component should match snapshot 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <SignUpUser />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": Array [
+        <h4>
+          Sign Up to save your favorite Hanks movies!
+</h4>,
+        <form
+          onSubmit={[Function]}
+>
+          <input
+                    className="name-input"
+                    name="name"
+                    onChange={[Function]}
+                    placeholder="User Name"
+                    required={true}
+                    value=""
+          />
+          <input
+                    className="email-input"
+                    name="email"
+                    onChange={[Function]}
+                    placeholder="Email"
+                    required={true}
+                    type="email"
+                    value=""
+          />
+          <input
+                    className="password-input"
+                    name="password"
+                    onChange={[Function]}
+                    placeholder="Password"
+                    required={true}
+                    value=""
+          />
+          <button>
+                    Sign Up
+          </button>
+          <NavLink
+                    activeClassName="active"
+                    aria-current="page"
+                    className="NavLink"
+                    onClick={[Function]}
+                    to="/login"
+          >
+                    If you already have an account, Log In here!
+          </NavLink>
+</form>,
+        <Connect(Alert) />,
+      ],
+      "className": "signup-cont",
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": "Sign Up to save your favorite Hanks movies!",
+        },
+        "ref": null,
+        "rendered": "Sign Up to save your favorite Hanks movies!",
+        "type": "h4",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "host",
+        "props": Object {
+          "children": Array [
+            <input
+              className="name-input"
+              name="name"
+              onChange={[Function]}
+              placeholder="User Name"
+              required={true}
+              value=""
+/>,
+            <input
+              className="email-input"
+              name="email"
+              onChange={[Function]}
+              placeholder="Email"
+              required={true}
+              type="email"
+              value=""
+/>,
+            <input
+              className="password-input"
+              name="password"
+              onChange={[Function]}
+              placeholder="Password"
+              required={true}
+              value=""
+/>,
+            <button>
+              Sign Up
+</button>,
+            <NavLink
+              activeClassName="active"
+              aria-current="page"
+              className="NavLink"
+              onClick={[Function]}
+              to="/login"
+>
+              If you already have an account, Log In here!
+</NavLink>,
+          ],
+          "onSubmit": [Function],
+        },
+        "ref": null,
+        "rendered": Array [
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "name-input",
+              "name": "name",
+              "onChange": [Function],
+              "placeholder": "User Name",
+              "required": true,
+              "value": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "email-input",
+              "name": "email",
+              "onChange": [Function],
+              "placeholder": "Email",
+              "required": true,
+              "type": "email",
+              "value": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "className": "password-input",
+              "name": "password",
+              "onChange": [Function],
+              "placeholder": "Password",
+              "required": true,
+              "value": "",
+            },
+            "ref": null,
+            "rendered": null,
+            "type": "input",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "host",
+            "props": Object {
+              "children": "Sign Up",
+            },
+            "ref": null,
+            "rendered": "Sign Up",
+            "type": "button",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
+            "props": Object {
+              "activeClassName": "active",
+              "aria-current": "page",
+              "children": "If you already have an account, Log In here!",
+              "className": "NavLink",
+              "onClick": [Function],
+              "to": "/login",
+            },
+            "ref": null,
+            "rendered": "If you already have an account, Log In here!",
+            "type": [Function],
+          },
+        ],
+        "type": "form",
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "class",
+        "props": Object {},
+        "ref": null,
+        "rendered": null,
+        "type": [Function],
+      },
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <h4>
+            Sign Up to save your favorite Hanks movies!
+</h4>,
+          <form
+            onSubmit={[Function]}
+>
+            <input
+                        className="name-input"
+                        name="name"
+                        onChange={[Function]}
+                        placeholder="User Name"
+                        required={true}
+                        value=""
+            />
+            <input
+                        className="email-input"
+                        name="email"
+                        onChange={[Function]}
+                        placeholder="Email"
+                        required={true}
+                        type="email"
+                        value=""
+            />
+            <input
+                        className="password-input"
+                        name="password"
+                        onChange={[Function]}
+                        placeholder="Password"
+                        required={true}
+                        value=""
+            />
+            <button>
+                        Sign Up
+            </button>
+            <NavLink
+                        activeClassName="active"
+                        aria-current="page"
+                        className="NavLink"
+                        onClick={[Function]}
+                        to="/login"
+            >
+                        If you already have an account, Log In here!
+            </NavLink>
+</form>,
+          <Connect(Alert) />,
+        ],
+        "className": "signup-cont",
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": "Sign Up to save your favorite Hanks movies!",
+          },
+          "ref": null,
+          "rendered": "Sign Up to save your favorite Hanks movies!",
+          "type": "h4",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "host",
+          "props": Object {
+            "children": Array [
+              <input
+                className="name-input"
+                name="name"
+                onChange={[Function]}
+                placeholder="User Name"
+                required={true}
+                value=""
+/>,
+              <input
+                className="email-input"
+                name="email"
+                onChange={[Function]}
+                placeholder="Email"
+                required={true}
+                type="email"
+                value=""
+/>,
+              <input
+                className="password-input"
+                name="password"
+                onChange={[Function]}
+                placeholder="Password"
+                required={true}
+                value=""
+/>,
+              <button>
+                Sign Up
+</button>,
+              <NavLink
+                activeClassName="active"
+                aria-current="page"
+                className="NavLink"
+                onClick={[Function]}
+                to="/login"
+>
+                If you already have an account, Log In here!
+</NavLink>,
+            ],
+            "onSubmit": [Function],
+          },
+          "ref": null,
+          "rendered": Array [
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "name-input",
+                "name": "name",
+                "onChange": [Function],
+                "placeholder": "User Name",
+                "required": true,
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "email-input",
+                "name": "email",
+                "onChange": [Function],
+                "placeholder": "Email",
+                "required": true,
+                "type": "email",
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "className": "password-input",
+                "name": "password",
+                "onChange": [Function],
+                "placeholder": "Password",
+                "required": true,
+                "value": "",
+              },
+              "ref": null,
+              "rendered": null,
+              "type": "input",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "host",
+              "props": Object {
+                "children": "Sign Up",
+              },
+              "ref": null,
+              "rendered": "Sign Up",
+              "type": "button",
+            },
+            Object {
+              "instance": null,
+              "key": undefined,
+              "nodeType": "function",
+              "props": Object {
+                "activeClassName": "active",
+                "aria-current": "page",
+                "children": "If you already have an account, Log In here!",
+                "className": "NavLink",
+                "onClick": [Function],
+                "to": "/login",
+              },
+              "ref": null,
+              "rendered": "If you already have an account, Log In here!",
+              "type": [Function],
+            },
+          ],
+          "type": "form",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "class",
+          "props": Object {},
+          "ref": null,
+          "rendered": null,
+          "type": [Function],
+        },
+      ],
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+    "attachTo": undefined,
+    "disableLifecycleMethods": true,
+    "hydrateIn": undefined,
+  },
+}
+`;
