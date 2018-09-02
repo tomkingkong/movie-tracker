@@ -100,40 +100,21 @@ describe('fetchApi', () => {
       await userSignUp('wil', 'w@w', 'w');
       expect(window.fetch).toHaveBeenCalled();
     });
-  });
 
-  describe('userLogIn', () => {
-    it('should be called with the correct params', async () => {
-      const user = [
-        "tman2272@aol.com",
-        'password'
-      ]
-      const expected = ["http://localhost:3000/api/users",
-      {
-        method: 'POST',
-        body: JSON.stringify(...user),
-        headers: {
-          'Content-Type': 'application/json'
+    it('should return alert object if email has already been taken', async () => {
+      const mockUser = {
+        name: 'T',
+        email: 'tman2272@aol.com',
+        password: 'b'
         }
-      }];
-
-      await userLogIn(...user);
-
-      expect(window.fetch).toHaveBeenCalledWith(...expected)
-    });
-
-    it('should return an alert if there is no user', async () => {
-      window.fetch = jest.fn().mockImplementation(() => Promise.reject({
-        
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: false,
+        json: () => Promise.reject({})
       }));
 
-      await expect(userLogIn('email', 'password')).resolves.toEqual({
-        alert: 'Email and Password do not match.'
-      });
-  })
-});   const result = await userSignUp(mockUser);
+      const expected = {alert: 'Email has already been taken.'};
 
-      expect(result).toEqual(expected)
+      await expect(userSignUp(mockUser)).resolves.toEqual(expected);
     })
   });
 
