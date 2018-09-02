@@ -53,5 +53,11 @@ describe('moviesReducer', () => {
   });
 });
 
+describe('alertReducer', () => {
+  it('should return the initial state', () => {
+    const expected = '';
+    const result = alertReducer(undefined, {});
+    expect(result).toEqual(expected);
+  });
 
 })
