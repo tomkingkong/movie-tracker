@@ -9,7 +9,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <FormRoute />
+        <header className="header">
+          <h1 className="title">Hanks Movies</h1>
+            <FormRoute />
+        </header>
         <ContentRoute />
       </div>
     );
