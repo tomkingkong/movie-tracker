@@ -50,6 +50,17 @@ describe('fetchApi', () => {
 
     it('should return an object if status code is ok', async () => {
       await expect(fetchUserFavorites(1)).resolves.toEqual(hanksCredits);
-    })
-  })
+    });
+
+    it('should return an alert object if status code is not ok', async () => {
+      const expected = {alert: 'Add to your favorites by selecting movies you like.'}
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        json: () => Promise.reject(expected)
+      }));
+
+       const result = await fetchUserFavorites(1);
+       
+       await expect(result).toEqual(expected);
+    });
+  });
 });

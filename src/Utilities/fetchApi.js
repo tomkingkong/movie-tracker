@@ -8,7 +8,13 @@ export const discoverMovies = async () => {
   const hanksMovieData = hanksCredits.cast.map(async credit => { 
     return cleanMovieData(credit);
   })
-  return await Promise.all(hanksMovieData);
+  if (response.ok) {
+    return await Promise.all(hanksMovieData);
+  } else {
+    return {
+      alert: 'Something is wrong with your connection.'
+    }
+  }
 }
 
 export const fetchUserFavorites = async (userId) => {
@@ -18,7 +24,7 @@ export const fetchUserFavorites = async (userId) => {
     const userFavorites = await response.json();
     return userFavorites;
   } catch(error) {
-    console.log(error)
+    return {alert: 'Add to your favorites by selecting movies you like.'}
   }
 }
 
@@ -36,7 +42,6 @@ export const addUserFavorite = (userId, movie) =>{
 };
 
 export const removeUserFavorite = async (userId, movieId) =>{
-  console.log(userId, movieId)
   const url = `http://localhost:3000/api/users/${userId}/favorites/${movieId}`;
   return await fetch(url, {
     method: 'DELETE',
