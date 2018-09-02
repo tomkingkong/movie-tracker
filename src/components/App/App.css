@@ -10,21 +10,28 @@ body {
 
 .header {
   background-color: #f9f14d;
+<<<<<<< HEAD
   height: 5rem;
   padding: 20px; }
+=======
+  height: 7rem;
+  padding: 20px;
+  display: flex; }
+>>>>>>> Add styling for header
 
 .title {
+  display: flex;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
-  margin: 0 auto;
   border: none;
   font: normal 82px/normal "Anton", Helvetica, sans-serif;
-  color: #707070;
+  color: #133f37;
   text-align: left;
-  text-transform: uppercase;
   font-size: 2.5rem;
+  width: 5rem;
   text-overflow: clip;
+<<<<<<< HEAD
   letter-spacing: 3px; }
 
 .navbar {
@@ -71,3 +78,7 @@ body {
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
+=======
+  letter-spacing: 2px;
+  text-shadow: 0.5px 0.5px 0 #eeeeee, 6px 6px 0 #707070; }
+>>>>>>> Add styling for header
