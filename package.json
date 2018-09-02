@@ -2,11 +2,18 @@
   "name": "movie-tracker-app",
   "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "connected-react-router": "^4.4.1",
+  "devDependencies": {
     "enzyme": "^3.5.0",
     "enzyme-adapter-react-16": "^1.3.0",
+    "enzyme-to-json": "^3.3.4",
     "eslint": "^5.4.0",
+    "jest": "^23.5.0",
+    "react-scripts": "1.1.5",
+    "redux-mock-store": "^1.5.3",
+    "redux-test-utils": "^0.2.2"
+  },
+  "dependencies": {
+    "connected-react-router": "^4.4.1",
     "history": "^4.7.2",
     "node-sass-chokidar": "^1.3.3",
     "prop-types": "^15.6.2",
@@ -15,7 +22,6 @@
     "react-redux": "^5.0.7",
     "react-router": "^4.1.2",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.5",
     "redux": "^4.0.0",
     "redux-thunk": "^2.3.0"
   },
@@ -36,7 +42,8 @@
       "!src/reducers/index.js",
       "!src/setupTests.js",
       "!src/registerServiceWorker.js",
-      "!src/data.MockData.js"
+      "!src/data.MockData.js",
+      "!src/key.js"
     ]
   }
 }

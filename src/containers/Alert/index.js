@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
+
 import { alertUser } from '../../actions';
 
-const Alert = ({ alertMsg }) => {
+export const Alert = ({ alertMsg }) => {
   return (
     <h4>{ alertMsg }</h4>
   )

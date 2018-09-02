@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 export const cleanMovieData = (fetchedMovie) => {
   const cleanMovie = {
     title: fetchedMovie.title,
@@ -8,4 +10,16 @@ export const cleanMovieData = (fetchedMovie) => {
     release_date: fetchedMovie.release_date
   };
   return cleanMovie;
+}
+
+const { string, number, shape } = PropTypes;
+cleanMovieData.propTypes = {
+  fetchedMovie: shape({
+    title: string,
+    vote_average: string,
+    poster_path: string,
+    id: number,
+    overview: string,
+    release_date: string,
+  })
 }

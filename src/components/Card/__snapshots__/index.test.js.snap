@@ -1,0 +1,59 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component should match snapshot after toggling favorite 1`] = `
+<article
+  className="Card  hide"
+  onClick={[Function]}
+>
+  <div
+    className="description"
+  >
+    <h2>
+      title
+    </h2>
+    <p>
+      overview
+    </p>
+  </div>
+  <img
+    src="words.jpg"
+  />
+  <h1>
+    title
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    ★
+  </button>
+</article>
+`;
+
+exports[`Card component should match snapshot with props passed 1`] = `
+<article
+  className="Card  hide"
+  onClick={[Function]}
+>
+  <div
+    className="description"
+  >
+    <h2>
+      title
+    </h2>
+    <p>
+      overview
+    </p>
+  </div>
+  <img
+    src="words.jpg"
+  />
+  <h1>
+    title
+  </h1>
+  <button
+    onClick={[Function]}
+  >
+    ☆
+  </button>
+</article>
+`;

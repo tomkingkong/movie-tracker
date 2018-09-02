@@ -7,7 +7,7 @@ import { userLogIn, fetchUserFavorites } from '../../Utilities/fetchApi';
 import { loginUser, updateFavorites, alertUser } from '../../actions';
 import Alert from '../Alert';
  
-export class LoginUser extends Component {
+export class LogInUser extends Component {
   constructor() {
     super()
     this.state = {
@@ -78,4 +78,4 @@ const mapDispatchToProps = (dispatch) => ({
   alertUser: (message) => dispatch(alertUser(message))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginUser));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LogInUser));
