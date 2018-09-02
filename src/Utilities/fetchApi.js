@@ -31,7 +31,13 @@ export const discoverMovies = async () => {
   const hanksMovieData = hanksCredits.cast.map(async credit => { 
     return cleanMovieData(credit);
   })
-  return await Promise.all(hanksMovieData);
+  if (response.ok) {
+    return await Promise.all(hanksMovieData);
+  } else {
+    return {
+      alert: 'Something is wrong with your connection.'
+    }
+  }
 }
 
 export const fetchUserFavorites = async (userId) => {
@@ -41,7 +47,7 @@ export const fetchUserFavorites = async (userId) => {
     const userFavorites = await response.json();
     return userFavorites;
   } catch(error) {
-    console.log(error)
+    return {alert: 'Add to your favorites by selecting movies you like.'}
   }
 }
 
