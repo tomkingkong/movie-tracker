@@ -81,3 +81,11 @@ describe('userReducer', () => {
     const result = userReducer(initialState, actions.loginUser(newUser));
     expect(result).toEqual(newUser);
   });
+
+  it('should remove a the user', () => {
+    const expected = {};
+    const initialState = { name: 'Tim', email: 's', password: 's', id: 1 }
+    const result = userReducer(initialState, actions.logoutUser());
+    expect(result).toEqual(expected);
+  });
+});
