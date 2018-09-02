@@ -101,4 +101,25 @@ describe('fetchApi', () => {
       expect(window.fetch).toHaveBeenCalled();
     });
   });
+
+  describe('userLogIn', () => {
+    it('should be called with the correct params', async () => {
+      const user = [
+        "tman2272@aol.com",
+        'password'
+      ]
+      const expected = ["http://localhost:3000/api/users",
+      {
+        method: 'POST',
+        body: JSON.stringify(...user),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }];
+
+      await userLogIn(...user);
+
+      expect(window.fetch).toHaveBeenCalledWith(...expected)
+    })
+  })
 });
