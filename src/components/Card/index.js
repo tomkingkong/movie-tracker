@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import { addUserFavorite, removeUserFavorite } from '../../Utilities/fetchApi';
 import { removeFavorite, addFavorite } from '../../actions';
-
 import './Card.css';
-import { connect } from 'react-redux';
 
-class Card extends Component {
+export class Card extends Component {
   constructor() {
     super();
     this.state = {
@@ -66,6 +67,16 @@ const mapDispatchToProps = (dispatch) => ({
   addFavoriteToStore: (movie) => dispatch(addFavorite(movie)),
   removeFavoriteFromStore: (movieId) => dispatch(removeFavorite(movieId))
 })
+
+const { object, func, array } = PropTypes;
+Card.propTypes = {
+  user: object,
+  movie: object,
+  history: object,
+  favorites: array,
+  addFavoriteToStore: func,
+  removeFavoriteFromStore: func
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(Card)
 
