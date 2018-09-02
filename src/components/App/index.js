@@ -10,8 +10,8 @@ class App extends Component {
     return (
       <div className="App">
         <header className="header">
+          <FormRoute />
           <h1 className="title">Hanks Movies</h1>
-            <FormRoute />
         </header>
         <ContentRoute />
       </div>
