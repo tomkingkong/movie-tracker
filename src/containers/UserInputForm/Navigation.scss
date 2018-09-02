@@ -1,5 +1,7 @@
 $blue: #3084de;
 $burntOrange: rgb(193, 117, 59);
+// $mainYellow: #f9f14d;
+// $mainGrn: #133f37;
 
 .NavBar {
   position: relative;
@@ -97,8 +99,8 @@ $burntOrange: rgb(193, 117, 59);
 
 .signup-cont {
   align-self: center;
-  background: rgba(198, 203, 211, 0.946);
-  border: 0.2rem solid $blue;
+  background: $mainYellow;
+  border: 0.2rem solid $mainGrn;
   border-radius: 0.2rem;
   position: fixed;
   top: 5rem;
@@ -107,7 +109,7 @@ $burntOrange: rgb(193, 117, 59);
   width: 25rem;
   z-index: 9999;
     h4 {
-      color: $blue;
+      color: $mainGrn;
       font-size: 1.4rem;
       margin: 0 0 1rem 0;
     }
@@ -122,7 +124,8 @@ $burntOrange: rgb(193, 117, 59);
       width: 60%;
     }
     button {
-      color: grey;
+      background: $mainGrn;
+      color: $mainYellow;
       cursor: pointer;
       font-size: 1rem;
       height: 1.5rem;
