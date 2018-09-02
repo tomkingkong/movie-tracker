@@ -70,3 +70,14 @@ describe('Card component', () => {
     wrapper.instance().componentDidMount();
     expect(wrapper.state().favorite).toEqual(true);
   });
+
+  it('should switch toggleinfo to true on click', () => {
+    wrapper = shallow(
+      <Card 
+        movie={mockMovie}
+        history={mockHistory} 
+        key={mockMovie.title+1}  
+      />);
+    wrapper.find('article').simulate('click');
+    expect(wrapper.state().toggleInfo).toEqual(true);
+  });
