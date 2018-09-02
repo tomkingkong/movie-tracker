@@ -44,5 +44,14 @@ describe('moviesReducer', () => {
     expect(result).toEqual(expected);
   });
 
+  it('should update state with Hanks movies', () => {
+    const initialState = [];
+    const movies = [{title: 'Big'}, {title: 'Big'}];
+    const expected = [...movies];
+    const result = moviesReducer(initialState, actions.displayHanksMovies(movies));
+    expect(result).toEqual(expected);
+  });
+});
+
 
 })
