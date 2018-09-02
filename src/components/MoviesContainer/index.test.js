@@ -16,3 +16,11 @@ describe('MoviesContainer component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should display loading gif if no movies to display', () => {
+    const movies = undefined;
+    const history = {};
+    const wrapper = shallow(<MoviesContainer movies={movies} history={history} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+});
+
