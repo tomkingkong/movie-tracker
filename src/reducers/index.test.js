@@ -60,4 +60,10 @@ describe('alertReducer', () => {
     expect(result).toEqual(expected);
   });
 
-})
+  it('should return an alert message', () => {
+    const initialState = '';
+    const expected = 'Alert!';
+    const result = alertReducer(initialState, actions.alertUser('Alert!'));
+    expect(result).toEqual(expected);
+  });
+});
