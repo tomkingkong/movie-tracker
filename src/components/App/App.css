@@ -1,6 +1,2 @@
-.App {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-
+html {
+  background-image: url("../../images/concrete.jpg"); }
