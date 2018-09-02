@@ -111,3 +111,33 @@ describe('Card component', () => {
     wrapper.find('button').simulate('click', e);
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('should call addFavoriteToStore if not matching favorite in store', () => {
+    wrapper = shallow(
+      <Card 
+        favorites={[{}]}
+        user={mockUser}
+        removeFavoriteFromStore={mockFn}
+        addFavoriteToStore={mockAddFavorite}
+        movie={mockMovie}
+        history={mockHistory} 
+        key={mockMovie.title+1}  
+      />);
+    wrapper.find('button').simulate('click', e);
+    expect(mockAddFavorite).toHaveBeenCalled();
+  });
+
+  it('should call removeFavoriteFromStore if matching favorite in store', () => {
+    wrapper = shallow(
+      <Card 
+        favorites={[mockMovie]}
+        user={mockUser}
+        removeFavoriteFromStore={mockRemoveFavorite}
+        addFavoriteToStore={mockFn}
+        movie={mockMovie}
+        history={mockHistory} 
+        key={mockMovie.title+1}  
+      />);
+    wrapper.find('button').simulate('click', e);
+    expect(mockRemoveFavorite).toHaveBeenCalled();
+  });
