@@ -2,12 +2,12 @@ import React from 'react';
 import { shallow } from 'enzyme';
 import LogInUser from './LogInUser';
 
-describe('LoginUser', () => {
-  describe('LoginUser Component', () => {
+describe('LogInUser', () => {
+  describe('LogInUser Component', () => {
     let wrapper;
 
     beforeEach(() => {
-      wrapper = shallow(<LoginUser />);
+      wrapper = shallow(<LogInUser />);
     })
 
     it('should match snapshot', () => {

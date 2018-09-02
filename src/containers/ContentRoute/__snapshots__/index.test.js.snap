@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ContentRoute container should match snapshot with the / path 1`] = `
+<Switch>
+  <Route
+    exact={true}
+    path="/favorites"
+    render={[Function]}
+  />
+  <Route
+    path="/"
+    render={[Function]}
+  />
+</Switch>
+`;
+
+exports[`ContentRoute container should match snapshot with the /favorites path 1`] = `
+<Switch>
+  <Route
+    exact={true}
+    path="/favorites"
+    render={[Function]}
+  />
+  <Route
+    path="/"
+    render={[Function]}
+  />
+</Switch>
+`;

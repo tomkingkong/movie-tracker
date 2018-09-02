@@ -1,6 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { SignUpUser, mapStateToProps, mapDispatchToProps } from './SignUpUser';
+import { SignUpUser, mapDispatchToProps } from './SignUpUser';
+import { loginUser, alertUser } from '../../actions';
+import { debug } from 'util';
 
 describe('SignUpUser', () => {
   describe('SignUpUser Component', () => {
@@ -11,7 +13,7 @@ describe('SignUpUser', () => {
     });
 
     it('should match snapshot', () => {
-      expect(wrapper.html()).toMatchSnapshot()
+      expect(wrapper).toMatchSnapshot()
     });
 
     describe('handleChange', () => {
@@ -50,7 +52,7 @@ describe('SignUpUser', () => {
       });
     });
 
-    describe('handleSubmit', () => {
+    describe.skip('handleSubmit', () => {
       it('should invoke handleSubmit when form is submitted', () => {
         const spy = spyOn(wrapper.instance(), 'handleSubmit');
         const mockEvent = {preventDefault: jest.fn()};
@@ -59,18 +61,41 @@ describe('SignUpUser', () => {
         wrapper.find('form').simulate('submit', mockEvent);
         expect(spy).toHaveBeenCalled();
       });
+
+      it('should invoke alertUser if userInfo has alert', () => {
+        const mockAlertUser = jest.fn();
+        const mockEvent = { preventDefault: jest.fn() }
+        wrapper = shallow(<SignUpUser alertUser={mockAlertUser} />);
+        wrapper.setState({userInfo: {alert: 'bingo'}});
+        wrapper.instance().handleSubmit(mockEvent)
+
+        expect(mockAlertUser).toHaveBeenCalled()
+      });
     });
   });
-  describe('mapStateToProps', () => {
-    it('should return an object with an array of movies', () => {
-      const mockState = {
-        movies: [{}],
-        bingo: 'bingo'
+  describe('mapDispatchToProps', () => {
+    it.skip('should dispatch loginUser action when login is invoked', () => {
+      const mockUser = {
+        name: 'wil',
+        email: 'a@a',
+        password: 'wil'
       };
-      const expected = {movies: [{}]}
-      const mappedProps = mapStateToProps(mockState);
+      const mockDispatch = jest.fn();
+      const actionToDispatch = loginUser(mockUser)
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.login(mockUser)
 
-      expect(mappedProps).toEqual(expected);
-    })
-  })
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it.skip('should dispatch alertUser action when alertUser is invoked', () => {
+      const mockMessage = { alert: 'Email has already been taken.' };
+      const mockDispatch = jest.fn();
+      const actionToDispatch = alertUser(mockMessage);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.alertUser(mockMessage);
+
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  });
 });

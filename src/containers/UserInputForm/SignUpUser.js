@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import { NavLink } from 'react-router-dom';
+
+import './Navigation.css';
 import { userSignUp } from '../../Utilities/fetchApi';
-import Alert from '../../containers/Alert';
-// import './UserInputForm.css';
 import { loginUser, alertUser } from '../../actions';
-import { Link } from 'react-router-dom';
+import Alert from '../../containers/Alert';
  
 export class SignUpUser extends Component {
   constructor() {
@@ -36,10 +37,11 @@ export class SignUpUser extends Component {
   }
 
   render() {
-    const {email, password, name} = this.state;
+    const { email, password, name } = this.state;
     const { alertUser } = this.props;
     return (
       <div className="signup-cont">
+        <h4>Sign Up to save your favorite Hanks movies!</h4>
         <form onSubmit={this.handleSubmit}>
           <input
             className='name-input'
@@ -67,26 +69,19 @@ export class SignUpUser extends Component {
             onChange={this.handleChange}
           />
           <button>Sign Up</button>
-          <Link to='/' onClick={() => alertUser('')}>
-            <input
-              value='Login'
-              type='button'
-            />
-          </Link>
         </form>
         <Alert />
+        <NavLink className="NavLink" to='/login' onClick={() => alertUser('')}>
+          If you already have an account, Log In here!
+        </NavLink>
       </div>
     )
   }
 }
-
-export const mapStateToProps = (state) => ({ 
-  currentUser: state.user 
-})
 
 export const mapDispatchToProps = (dispatch) => ({
   login: (user) => dispatch(loginUser(user)),
   alertUser: (message) => dispatch(alertUser(message))
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUpUser);
+export default connect(null, mapDispatchToProps)(SignUpUser);

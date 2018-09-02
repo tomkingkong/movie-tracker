@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
+import { NavLink, withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
 
-// import './UserInputForm.css';
+import './Navigation.css';
 import { userLogIn, fetchUserFavorites } from '../../Utilities/fetchApi';
 import { loginUser, updateFavorites, alertUser } from '../../actions';
-import { Link, withRouter } from 'react-router-dom';
 import Alert from '../Alert';
  
-export class LoginUser extends Component {
+export class LogInUser extends Component {
   constructor() {
     super()
     this.state = {
@@ -40,7 +40,7 @@ export class LoginUser extends Component {
     const { email, password } = this.state;
     const { alertUser } = this.props;
     return (
-      <div>
+      <div className="NavBar">
         <form onSubmit={this.handleSubmit}>
           <input 
             required
@@ -58,12 +58,9 @@ export class LoginUser extends Component {
             onChange={this.handleChange}
           />
           <button>Login</button>
-          <Link to='/signup' onClick={() => alertUser('')}>
-            <input 
-              value='Sign Up'
-              type='button'
-            />
-          </Link>
+          <NavLink className="NavLink" to='/signup' onClick={() => alertUser('')}>
+            Sign Up
+          </NavLink>
         </form>
         <Alert />
       </div>
@@ -81,4 +78,4 @@ const mapDispatchToProps = (dispatch) => ({
   alertUser: (message) => dispatch(alertUser(message))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LoginUser));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LogInUser));

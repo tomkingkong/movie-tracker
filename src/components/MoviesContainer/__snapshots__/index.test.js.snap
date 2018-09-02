@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MoviesContainer component should display loading gif if no movies to display 1`] = `
+<Route>
+  <Component />
+</Route>
+`;
+
+exports[`MoviesContainer component should match snapshot 1`] = `
+<Route>
+  <Component />
+</Route>
+`;
+
+exports[`MoviesContainer component should match snapshot with props 1`] = `
+<Route>
+  <Component />
+</Route>
+`;
