@@ -47,3 +47,14 @@ describe('Card component', () => {
       />);
     expect(wrapper).toMatchSnapshot();
   });
+
+  it('should have default state of toggleinfo and favorite set to false', () => {
+    wrapper = shallow(
+      <Card 
+        movie={mockMovie}
+        history={mockHistory} 
+        key={mockMovie.title+1}  
+      />);
+    expect(wrapper.state().toggleInfo).toEqual(false);
+    expect(wrapper.state().favorite).toEqual(false);
+  });
