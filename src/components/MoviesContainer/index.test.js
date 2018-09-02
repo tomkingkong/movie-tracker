@@ -9,3 +9,10 @@ describe('MoviesContainer component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
+  it('should match snapshot with props', () => {
+    const movies = [{}];
+    const history = {}
+    const wrapper = shallow(<MoviesContainer movies={movies} history={history} />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
