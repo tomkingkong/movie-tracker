@@ -28,11 +28,11 @@ export const discoverMovies = async () => {
   const url = `https://api.themoviedb.org/3/person/31/movie_credits?api_key=${API_KEY}&language=en-US`;
   const response = await fetch(url);
   const hanksCredits = await response.json();
-  const hanksMovieData = hanksCredits.cast.map(async credit => { 
+  const hanksMovieData = hanksCredits.cast.map( credit => { 
     return cleanMovieData(credit);
   })
   if (response.ok) {
-    return await Promise.all(hanksMovieData);
+    return hanksMovieData;
   } else {
     return {
       alert: 'Something is wrong with your connection.'

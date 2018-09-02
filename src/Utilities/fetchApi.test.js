@@ -1,11 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { API_KEY } from '../key';
-import { discoverMovies, fetchUserFavorites, addUserFavorite } from './fetchApi';
-import { mockMovie, hanksCredits } from './mockData';
-
-
-
+import { discoverMovies, fetchUserFavorites, addUserFavorite, removeUserFavorite, userSignUp, userLogIn } from './fetchApi';
+import { mockMovie, hanksCredits, cleanedHanksCredits } from './mockData';
 
 describe('fetchApi', () => {
   let mockUrl;
@@ -15,6 +12,7 @@ describe('fetchApi', () => {
   describe('discoverMovies', () => {
     beforeEach(() => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: true,
         json: () => Promise.resolve( hanksCredits )
       }));
     });
@@ -27,10 +25,11 @@ describe('fetchApi', () => {
       expect(window.fetch).toHaveBeenCalledWith(expected);
     });
 
-    it.skip('should return an object if status code ok', async () => {
-      const expected = hanksCredits;
+    it('should return an object if status code ok', async () => {
+      const expected = cleanedHanksCredits;
 
       await expect(discoverMovies()).resolves.toEqual(expected)
+    });
     })
   });
 
@@ -75,10 +74,6 @@ describe('fetchApi', () => {
         }),
         headers: {'Content-Type': 'application/json'}
       };
-
-      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-        json: () => Promise.resolve(hanksCredits)
-      }));
     });
     it('should be invoked with correct params', () => {
       const mockUrl = "http://localhost:3000/api/users/favorites/new"
