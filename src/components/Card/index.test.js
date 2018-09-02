@@ -81,3 +81,19 @@ describe('Card component', () => {
     wrapper.find('article').simulate('click');
     expect(wrapper.state().toggleInfo).toEqual(true);
   });
+
+  it('toggleinfo should change from hide to show', () => {
+    wrapper = shallow(
+      <Card 
+        movie={mockMovie}
+        history={mockHistory} 
+        key={mockMovie.title+1}  
+      />);
+
+    expect(wrapper.find('article').hasClass('hide')).toEqual(true);
+    expect(wrapper.find('article').hasClass('show')).toEqual(false);
+    wrapper.instance().toggleInfo();
+    expect(wrapper.find('article').hasClass('hide')).toEqual(false);
+    expect(wrapper.find('article').hasClass('show')).toEqual(true);
+  });
+
