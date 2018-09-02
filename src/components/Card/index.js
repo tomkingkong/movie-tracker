@@ -13,17 +13,25 @@ class Card extends Component {
       favorite: false
     }
   }
+
+  componentDidMount() {
+    const { favorites, movie } = this.props;
+    const userFavorites = favorites.map(fav => fav.movie_id);
+    if (userFavorites.includes(movie.movie_id)) {
+      this.setState({ favorite: !this.state.favorite });
+    }
+  }
   
-  toggleInfo = () => {
+  toggleInfo = (e) => {
     this.setState({toggleInfo: !this.state.toggleInfo});
   }
 
-  toggleFavorite = () => {
+  toggleFavorite = (e) => {
+    e.stopPropagation();
     const { user, movie, history, favorites, addFavoriteToStore, removeFavoriteFromStore } = this.props;
     const userFavorites = favorites.map(fav => fav.movie_id);
     if (!user.name) {
-      history.push('/signup')
-      return
+      return history.push('/signup');
     }
     if (userFavorites.includes(movie.movie_id)) {
       removeFavoriteFromStore(movie.movie_id);
@@ -52,10 +60,7 @@ class Card extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
-  user: state.user,
-  favorites: state.favorites
-})
+const mapStateToProps = ({ user, favorites }) => ({ user, favorites });
 
 const mapDispatchToProps = (dispatch) => ({
   addFavoriteToStore: (movie) => dispatch(addFavorite(movie)),

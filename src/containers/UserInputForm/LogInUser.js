@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
+import { NavLink, withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
 
-// import './UserInputForm.css';
+import './Navigation.css';
 import { userLogIn, fetchUserFavorites } from '../../Utilities/fetchApi';
 import { loginUser, updateFavorites, alertUser } from '../../actions';
-import { NavLink, withRouter } from 'react-router-dom';
 import Alert from '../Alert';
  
 export class LoginUser extends Component {
@@ -40,7 +40,7 @@ export class LoginUser extends Component {
     const { email, password } = this.state;
     const { alertUser } = this.props;
     return (
-      <div>
+      <div className="NavBar">
         <form onSubmit={this.handleSubmit}>
           <input 
             required
