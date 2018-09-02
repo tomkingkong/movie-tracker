@@ -120,6 +120,51 @@ describe('fetchApi', () => {
       await userLogIn(...user);
 
       expect(window.fetch).toHaveBeenCalledWith(...expected)
-    })
+    });
+
+    it('should return an alert if there is no user', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.reject({
+        
+      }));
+
+      await expect(userLogIn('email', 'password')).resolves.toEqual({
+        alert: 'Email and Password do not match.'
+      });
   })
+});   const result = await userSignUp(mockUser);
+
+      expect(result).toEqual(expected)
+    })
+  });
+
+  describe('userLogIn', () => {
+    it('should be called with the correct params', async () => {
+      const user = [
+        "tman2272@aol.com",
+        'password'
+      ]
+      const expected = ["http://localhost:3000/api/users",
+      {
+        method: 'POST',
+        body: JSON.stringify(...user),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }];
+
+      await userLogIn(...user);
+
+      expect(window.fetch).toHaveBeenCalledWith(...expected)
+    });
+
+    it('should return an alert if there is no user', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.reject({
+        
+      }));
+
+      await expect(userLogIn('email', 'password')).resolves.toEqual({
+        alert: 'Email and Password do not match.'
+      });
+    })
+  });
 });
