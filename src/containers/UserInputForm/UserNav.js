@@ -3,10 +3,15 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import './Navigation.css';
-import { logoutUser } from '../../actions';
+import { logoutUser, updateFavorites } from '../../actions';
 
-export const UserNav = (props) => {
-  const { logout, user } = props;
+export const UserNav = ({ user, clearFavorites, logout }) => {
+
+  const handleLogOut = () => {
+    clearFavorites([]);
+    logout();
+  }
+
   return (
     <div className="NavBar">
       <p className="tooltip" data-tooltip="Select your favorite Tom Hanks movies!">?</p>
@@ -18,7 +23,7 @@ export const UserNav = (props) => {
         Discover Hanks Movies
       </Link>
       <Link to="/" replace>
-        <button onClick={logout}>Log Out</button>
+        <button onClick={handleLogOut}>Log Out</button>
       </Link>
     </div>
   )
@@ -27,7 +32,8 @@ export const UserNav = (props) => {
 export const mapStateToProps = ({ user }) => ({ user });
 
 export const mapDispatchToProps = (dispatch) => ({
-  logout: () => dispatch(logoutUser())
+  logout: () => dispatch(logoutUser()),
+  clearFavorites: (movies) => dispatch(updateFavorites(movies))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserNav)
