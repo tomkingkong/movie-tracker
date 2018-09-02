@@ -157,3 +157,21 @@ describe('Card component', () => {
     wrapper.find('button').simulate('click', e);
     expect(wrapper.state().favorite).toEqual(true);
   });
+
+  it('should push /signup to history if user does not exist', () => {
+    mockUser = { name: undefined }
+    mockHistory = { push: jest.fn().mockImplementation(() => ({location:'/signup'}))}
+    wrapper = shallow(
+      <Card 
+        favorites={[mockMovie]}
+        user={mockUser}
+        removeFavoriteFromStore={mockRemoveFavorite}
+        addFavoriteToStore={mockFn}
+        movie={mockMovie}
+        history={mockHistory} 
+        key={mockMovie.title+1}  
+      />);
+    wrapper.find('button').simulate('click', e);
+    expect(mockHistory.push).toHaveBeenCalled();
+  });
+})
