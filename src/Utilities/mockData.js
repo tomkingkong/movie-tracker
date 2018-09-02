@@ -54,3 +54,19 @@ export const hanksCredits = {
         }
       ]
     }
+
+    export const cleanedHanksCredits = [{
+      "movie_id": 13,
+      "overview": "A man with a low IQ has accomplished great things in his life and been present during significant historic events - in each case, far exceeding what anyone imagined he could do. Yet, despite all the things he has attained, his one true love eludes him. 'Forrest Gump' is the story of a man who rose above his challenges, and who proved that determination, courage, and love are more important than ability.",
+      "poster_path": "https://image.tmdb.org/t/p/w500/yE5d3BUhE8hCnkMUJOo1QDoOGNz.jpg",
+      "release_date": "1994-07-06",
+      "title": "Forrest Gump",
+      "vote_average": 8.4
+    }, {
+      "movie_id": 35,
+      "overview": "After Homer accidentally pollutes the town's water supply, Springfield is encased in a gigantic dome by the EPA and the Simpsons are declared fugitives.",
+      "poster_path": "https://image.tmdb.org/t/p/w500/eCytnEriVur3rT47NWfkgPXD9qs.jpg",
+      "release_date": "2007-07-27",
+      "title": "The Simpsons Movie",
+      "vote_average": 6.9
+    }]

@@ -1,11 +1,8 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { API_KEY } from '../key';
-import { discoverMovies, fetchUserFavorites, addUserFavorite } from './fetchApi';
-import { mockMovie, hanksCredits } from './mockData';
-
-
-
+import { discoverMovies, fetchUserFavorites, addUserFavorite, removeUserFavorite, userSignUp, userLogIn } from './fetchApi';
+import { mockMovie, hanksCredits, cleanedHanksCredits } from './mockData';
 
 describe('fetchApi', () => {
   let mockUrl;
@@ -15,6 +12,7 @@ describe('fetchApi', () => {
   describe('discoverMovies', () => {
     beforeEach(() => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: true,
         json: () => Promise.resolve( hanksCredits )
       }));
     });
@@ -27,10 +25,11 @@ describe('fetchApi', () => {
       expect(window.fetch).toHaveBeenCalledWith(expected);
     });
 
-    it.skip('should return an object if status code ok', async () => {
-      const expected = hanksCredits;
+    it('should return an object if status code ok', async () => {
+      const expected = cleanedHanksCredits;
 
       await expect(discoverMovies()).resolves.toEqual(expected)
+    });
     })
   });
 
@@ -75,10 +74,6 @@ describe('fetchApi', () => {
         }),
         headers: {'Content-Type': 'application/json'}
       };
-
-      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-        json: () => Promise.resolve(hanksCredits)
-      }));
     });
     it('should be invoked with correct params', () => {
       const mockUrl = "http://localhost:3000/api/users/favorites/new"
@@ -87,5 +82,65 @@ describe('fetchApi', () => {
       addUserFavorite(1, mockMovie);
       expect(window.fetch).toHaveBeenCalledWith(...expected)
     });
+  });
+  describe('userSignUp', () => {
+    it('should create a new user', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({
+          id: 14
+        })
+      }));
+
+      await userSignUp('wil', 'w@w', 'w');
+      expect(window.fetch).toHaveBeenCalled();
+    });
+
+    it('should return alert object if email has already been taken', async () => {
+      const mockUser = {
+        name: 'T',
+        email: 'tman2272@aol.com',
+        password: 'b'
+        }
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: false,
+        json: () => Promise.reject({})
+      }));
+
+      const expected = {alert: 'Email has already been taken.'};
+
+      await expect(userSignUp(mockUser)).resolves.toEqual(expected);
+    })
+  });
+
+  describe('userLogIn', () => {
+    it('should be called with the correct params', async () => {
+      const user = [
+        "tman2272@aol.com",
+        'password'
+      ]
+      const expected = ["http://localhost:3000/api/users",
+      {
+        method: 'POST',
+        body: JSON.stringify(...user),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }];
+
+      await userLogIn(...user);
+
+      expect(window.fetch).toHaveBeenCalledWith(...expected)
+    });
+
+    it('should return an alert if there is no user', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.reject({
+        
+      }));
+
+      await expect(userLogIn('email', 'password')).resolves.toEqual({
+        alert: 'Email and Password do not match.'
+      });
+    })
   });
 });
