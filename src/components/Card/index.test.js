@@ -97,3 +97,17 @@ describe('Card component', () => {
     expect(wrapper.find('article').hasClass('show')).toEqual(true);
   });
 
+  it('should match snapshot after toggling favorite', () => {
+    wrapper = shallow(
+      <Card 
+        favorites={[mockMovie]}
+        user={mockUser}
+        removeFavoriteFromStore={mockFn}
+        addFavoriteToStore={mockFn}
+        movie={mockMovie}
+        history={mockHistory} 
+        key={mockMovie.title+1}  
+      />);
+    wrapper.find('button').simulate('click', e);
+    expect(wrapper).toMatchSnapshot();
+  });
