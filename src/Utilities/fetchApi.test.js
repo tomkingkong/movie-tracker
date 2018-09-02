@@ -88,4 +88,17 @@ describe('fetchApi', () => {
       expect(window.fetch).toHaveBeenCalledWith(...expected)
     });
   });
+  describe('userSignUp', () => {
+    it('should create a new user', async () => {
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve({
+          id: 14
+        })
+      }));
+
+      await userSignUp('wil', 'w@w', 'w');
+      expect(window.fetch).toHaveBeenCalled();
+    });
+  });
 });
