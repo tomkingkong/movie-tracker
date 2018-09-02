@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import { API_KEY } from '../key';
-import { discoverMovies, fetchUserFavorites } from './fetchApi';
+import { discoverMovies, fetchUserFavorites, addUserFavorite } from './fetchApi';
 import { mockMovie, hanksCredits } from './mockData';
 
 
@@ -38,8 +38,8 @@ describe('fetchApi', () => {
     beforeEach(() => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         json: () => Promise.resolve(hanksCredits)
-      }))
-    })
+      }));
+    });
     it('should be invoked with correct params', async () => {
       const expected = `http://localhost:3000/api/users/1/favorites`;
 
@@ -61,6 +61,31 @@ describe('fetchApi', () => {
        const result = await fetchUserFavorites(1);
        
        await expect(result).toEqual(expected);
+    });
+  });
+
+  describe('addUserFavorite', () => {
+    let mockOptions;
+    beforeEach(() => {
+      mockOptions = {
+        method: 'POST',
+        body: JSON.stringify({
+          user_id: 1,
+          ...mockMovie
+        }),
+        headers: {'Content-Type': 'application/json'}
+      };
+
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        json: () => Promise.resolve(hanksCredits)
+      }));
+    });
+    it('should be invoked with correct params', () => {
+      const mockUrl = "http://localhost:3000/api/users/favorites/new"
+      const expected = [mockUrl, mockOptions];
+
+      addUserFavorite(1, mockMovie);
+      expect(window.fetch).toHaveBeenCalledWith(...expected)
     });
   });
 });
