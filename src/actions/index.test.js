@@ -42,8 +42,6 @@ describe('actions', () => {
   })
 
   it('should have a type of REMOVE_FAVORITE', () => {
-    // const movie = {movieId: 5};
-    // const movieId = 5
     const expectedAction = {
       type: 'REMOVE_FAVORITE',
       movieId: 5
@@ -56,7 +54,7 @@ describe('actions', () => {
     const user = { name: 'Sam', email: 'sam@gmail.com', password: 'sam123' };
     const expectedAction = {
       type: 'LOGIN_USER',
-      user
+      user: { name: 'Sam', email: 'sam@gmail.com', password: 'sam123' }
     };
     const result = actions.loginUser(user);
     expect(result).toEqual(expectedAction)
