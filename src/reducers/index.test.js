@@ -75,3 +75,9 @@ describe('userReducer', () => {
     expect(result).toEqual(expected);
   });
 
+  it('should return with a new user', () => {
+    const initialState = {};
+    const newUser = { name: 'Tim', email: 's', password: 's', id: 1 }
+    const result = userReducer(initialState, actions.loginUser(newUser));
+    expect(result).toEqual(newUser);
+  });
