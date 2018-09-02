@@ -141,3 +141,19 @@ describe('Card component', () => {
     wrapper.find('button').simulate('click', e);
     expect(mockRemoveFavorite).toHaveBeenCalled();
   });
+
+  it('should switch favorite state if toggleFavorite is called', () => {
+    wrapper = shallow(
+      <Card 
+        favorites={[mockMovie]}
+        user={mockUser}
+        removeFavoriteFromStore={mockRemoveFavorite}
+        addFavoriteToStore={mockFn}
+        movie={mockMovie}
+        history={mockHistory} 
+        key={mockMovie.title+1}  
+      />);
+    expect(wrapper.state().favorite).toEqual(false);
+    wrapper.find('button').simulate('click', e);
+    expect(wrapper.state().favorite).toEqual(true);
+  });
