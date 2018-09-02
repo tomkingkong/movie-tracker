@@ -1,5 +1,7 @@
 $blue: #3084de;
 $burntOrange: rgb(193, 117, 59);
+$mainYellow: #f9f14d;
+$mainGrn: #133f37;
 
 .NavBar {
   position: relative;
@@ -97,24 +99,28 @@ $burntOrange: rgb(193, 117, 59);
 
 .signup-cont {
   align-self: center;
-  background: rgba(198, 203, 211, 0.946);
-  border: 0.2rem solid $blue;
+  background: $mainYellow;
+  border: 3px solid $mainGrn;
   border-radius: 0.2rem;
-  position: fixed;
-  top: 5rem;
+  color: $mainGrn;
+  left: 30%;
   margin: 0 auto;
   padding: 1rem;
+  position: fixed;
+  top: 20%;
   width: 25rem;
   z-index: 9999;
     h4 {
-      color: $blue;
+      color: $mainGrn;
       font-size: 1.4rem;
       margin: 0 0 1rem 0;
     }
     input {
-      display: block;
-      border-style: none;
+      background: #f9f5b3;
+      border: 3px solid $mainGrn;
       border-radius: 0.2rem;
+      color: #133f37;
+      display: block;
       font-size: 0.8rem;
       margin: 0.4rem auto;
       padding: 0.2rem;
@@ -122,17 +128,21 @@ $burntOrange: rgb(193, 117, 59);
       width: 60%;
     }
     button {
-      color: grey;
+      background: $mainGrn;
+      border: 0;
+      color: $mainYellow;
       cursor: pointer;
       font-size: 1rem;
       height: 1.5rem;
       width: 5rem;
     }
     button:hover {
-      color: $blue;
-      background-blend-mode: darken;
+      background: #e57e00;
     }
     .NavLink {
-      color: rgb(112, 146, 159);
+      color: #355053;
+    }
+    .NavLink:hover {
+      color: #e57e00;
     }
 }

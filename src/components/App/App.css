@@ -1,8 +1,15 @@
+html {
+  background-image: url("../../images/concrete.jpg");
+  background-repeat: repeat; }
+
 .App {
-  text-align: right; }
+  text-align: center; }
+
+body {
+  margin: 0; }
 
 .header {
-  background-color: #ebeb1ccf;
+  background-color: #f9f14d;
   height: 5rem;
   padding: 20px; }
 
@@ -64,9 +71,3 @@
     transform: rotate(0deg); }
   to {
     transform: rotate(360deg); } }
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-}
-
-
