@@ -36,10 +36,10 @@ export class Card extends Component {
     }
     if (userFavorites.includes(movie.movie_id)) {
       removeFavoriteFromStore(movie.movie_id);
-      removeFavoriteFetch(user.id, movie.movie_id);
+      removeUserFavorite(user.id, movie.movie_id);
     } else {
       addFavoriteToStore(movie);
-      addFavoriteFetch({user_id:user.id, ...movie});
+      addUserFavorite(user.id, movie);
     }
     this.setState({favorite: !this.state.favorite})
   }
