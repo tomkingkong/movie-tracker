@@ -95,21 +95,26 @@ describe('fetchCurry', () => {
     });
   });
 
-    it('should return alert object if email has already been taken', async () => {
+  describe('logInUserFetch', () => {
+    it('should take a user and add to database', async () => {
       const mockUser = {
-        name: 'T',
-        email: 'tman2272@aol.com',
-        password: 'b'
+        email: 'email@email',
+        password: 'password'
         }
+      const mockUrl =  "http://localhost:3000/api/users/";
+      const payload = {
+        method: 'POST',
+        body: JSON.stringify(mockUser),
+        headers: {"Content-Type": "application/json"}
+      }
+      const expected = [mockUrl, payload];
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-        ok: false,
-        json: () => Promise.reject({})
+        ok: true,
+        json: () => Promise.resolve( )
       }));
-
-      const expected = {alert: 'Email has already been taken.'};
-
-      await expect(userSignUp(mockUser)).resolves.toEqual(expected);
-    })
+      await logInUserFetch(mockUser);
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+  });
   });
 
   describe('userLogIn', () => {
