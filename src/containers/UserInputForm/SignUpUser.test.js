@@ -84,14 +84,9 @@ describe('SignUpUser', () => {
         expect(alertUser).toHaveBeenCalled();
       });
 
-    describe.skip('handleSubmit', () => {
-      it('should invoke handleSubmit when form is submitted', () => {
-        const spy = spyOn(wrapper.instance(), 'handleSubmit');
-        const mockEvent = {preventDefault: jest.fn()};
-        wrapper.instance().forceUpdate();
-
-        wrapper.find('form').simulate('submit', mockEvent);
-        expect(spy).toHaveBeenCalled();
+      it('should log in user if fetch passes', async () =>{
+        await wrapper.instance().handleSubmit(e);
+        expect(login).toHaveBeenCalled();
       });
 
       it('should invoke alertUser if userInfo has alert', () => {
