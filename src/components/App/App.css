@@ -1,23 +1,19 @@
 html {
   background-image: url("../../images/concrete.jpg");
-  background-repeat: repeat; 
-}
+  background-repeat: repeat; }
 
 .App {
-  text-align: center; 
-}
+  text-align: center; }
 
 body {
-  margin: 0; 
-}
+  margin: 0; }
 
 .header {
   background-color: rgba(0, 98, 178, 0.4);
   height: 7rem;
   -webkit-box-shadow: 10px 10px 63px 60px #090b24;
   -moz-box-shadow: 10px 10px 63px 60px #090b24;
-  box-shadow: 10px 10px 63px 60px #090b24;
-}
+  box-shadow: 10px 10px 63px 60px #090b24; }
 
 .title {
   background-color: #f9f14d;
@@ -32,5 +28,4 @@ body {
   text-transform: uppercase;
   font-size: 2.5rem;
   text-overflow: clip;
-  letter-spacing: 3px; 
-}
+  letter-spacing: 3px; }

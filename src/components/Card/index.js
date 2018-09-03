@@ -55,7 +55,10 @@ export class Card extends Component {
         </div>
         <img src={poster_path} />
         <h1>{title}</h1>
-        <button onClick={this.toggleFavorite}>{favorite ? '★' : '☆'}</button>
+        <button 
+          onClick={this.toggleFavorite}
+          className={favorite ? 'after-star' : 'before-star'}
+        ></button>
       </article>
     );
   }
