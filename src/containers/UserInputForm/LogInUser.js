@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import { NavLink, withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
 
 import './Navigation.css';
 import { fetchFavorites, logInUserFetch } from '../../Utilities/fetchApi';
@@ -9,11 +10,11 @@ import Alert from '../Alert';
  
 export class LogInUser extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       email: '',
       password: ''
-    }
+    };
   }
 
   handleChange = (e) => {
@@ -64,14 +65,21 @@ export class LogInUser extends Component {
         </form>
         <Alert />
       </div>
-    )
+    );
   }
 }
+
+const { func } = PropTypes;
+LogInUser.propTypes = {
+  login: func,
+  updateFavorites: func,
+  alertUser: func
+};
 
 export const mapDispatchToProps = (dispatch) => ({
   login: (user) => dispatch(loginUser(user)),
   updateFavorites: (movies) => dispatch(updateFavorites(movies)),
   alertUser: (message) => dispatch(alertUser(message))
-})
+});
 
 export default withRouter(connect(null, mapDispatchToProps)(LogInUser));

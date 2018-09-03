@@ -12,7 +12,7 @@ export class Card extends Component {
     this.state = {
       toggleInfo: false,
       favorite: false
-    }
+    };
   }
 
   componentDidMount() {
@@ -23,7 +23,7 @@ export class Card extends Component {
     }
   }
   
-  toggleInfo = (e) => {
+  toggleInfo = () => {
     this.setState({toggleInfo: !this.state.toggleInfo});
   }
 
@@ -41,11 +41,11 @@ export class Card extends Component {
       addFavoriteToStore(movie);
       addFavoriteFetch({ user_id: user.id, ...movie });
     }
-    this.setState({favorite: !this.state.favorite})
+    this.setState({favorite: !this.state.favorite});
   }
 
   render() {
-    const { title, poster_path, vote_average, overview, release_date } = this.props.movie;
+    const { title, poster_path, overview } = this.props.movie;
     const { toggleInfo, favorite } = this.state;
     return (
       <article className={`Card  ${toggleInfo ? "show" : "hide"}`} onClick={this.toggleInfo}>
@@ -57,7 +57,7 @@ export class Card extends Component {
         <h1>{title}</h1>
         <button onClick={this.toggleFavorite}>{favorite ? '★' : '☆'}</button>
       </article>
-    )
+    );
   }
 }
 
@@ -66,7 +66,7 @@ export const mapStateToProps = ({ user, favorites }) => ({ user, favorites });
 export const mapDispatchToProps = (dispatch) => ({
   addFavoriteToStore: (movie) => dispatch(addFavorite(movie)),
   removeFavoriteFromStore: (movieId) => dispatch(removeFavorite(movieId))
-})
+});
 
 const { object, func, array } = PropTypes;
 Card.propTypes = {
@@ -76,7 +76,7 @@ Card.propTypes = {
   favorites: array,
   addFavoriteToStore: func,
   removeFavoriteFromStore: func
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card)
+export default connect(mapStateToProps, mapDispatchToProps)(Card);
 

@@ -15,4 +15,4 @@ describe('FormRoute component', () => {
     ); 
     expect(wrapper).toMatchSnapshot();
   });
-})
+});

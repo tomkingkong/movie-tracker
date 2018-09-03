@@ -16,12 +16,12 @@ describe('Card component', () => {
 
   beforeEach(() => {
     window.fetch = jest.fn().mockImplementation(() => {
-      return Promise.resolve({ json:() => Promise.resolve({})})
-    })
+      return Promise.resolve({ json:() => Promise.resolve({})});
+    });
     mockRemoveFavorite = jest.fn();
     mockAddFavorite = jest.fn();
-    mockFn = jest.fn()
-    e = {stopPropagation:jest.fn()}
+    mockFn = jest.fn();
+    e = {stopPropagation:jest.fn()};
     mockMovie = {
       title: 'title', 
       poster_path: 'words.jpg', 
@@ -29,11 +29,10 @@ describe('Card component', () => {
       overview: 'overview', 
       release_date: 'release',
       movie_id: 35
-    }
-    mockUser = { id: 1, name:'tim' }
-    mockHistory = { push: jest.fn().mockImplementation(() => {}) }
-    testState = { movies: [mockMovie], favorites: [], user: {mockUser} };
-  })
+    };
+    mockUser = { id: 1, name:'tim' };
+    mockHistory = { push: jest.fn().mockImplementation(() => {}) };
+  });
 
   it('should match snapshot with props passed', () => {
     wrapper = shallow(
@@ -168,8 +167,8 @@ describe('Card component', () => {
   });
 
   it('should push /signup to history if user does not exist', () => {
-    mockUser = { name: undefined }
-    mockHistory = { push: jest.fn().mockImplementation(() => ({location:'/signup'}))}
+    mockUser = { name: undefined };
+    mockHistory = { push: jest.fn().mockImplementation(() => ({location:'/signup'}))};
     wrapper = shallow(
       <Card 
         favorites={[mockMovie]}
@@ -189,19 +188,19 @@ describe('Card component', () => {
       const name = 'Tim';
       const id = 2;
       const email = 'foo@barr';
-      const password = 'oops'
+      const password = 'oops';
       const mockStore = {
         user: {name, id, email, password},
         favorites: []
-      }
-      const expected = {...mockStore}
+      };
+      const expected = {...mockStore};
       const result = mapStateToProps(mockStore);
       expect(result).toEqual(expected);
     });
-  })
+  });
 
   describe('mapDispatchToProps', () => {
-    it('should remove movie from user\s favorites', () => {
+    it('should remove movie from user\'s favorites', () => {
       const mockDispatch = jest.fn();
       const actionToDispatch = removeFavorite({});
       const mappedProps = mapDispatchToProps(mockDispatch);
@@ -216,5 +215,5 @@ describe('Card component', () => {
       mappedProps.addFavoriteToStore({});
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
-  })
-})
+  });
+});

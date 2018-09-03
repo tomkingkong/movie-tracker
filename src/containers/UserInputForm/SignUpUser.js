@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './Navigation.css';
 import { signUpUserFetch } from '../../Utilities/fetchApi';
@@ -9,12 +10,12 @@ import Alert from '../../containers/Alert';
  
 export class SignUpUser extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       email: '',
       password: '',
       name: ''
-    }
+    };
   }
 
   handleChange = (e) => {
@@ -29,11 +30,11 @@ export class SignUpUser extends Component {
     const { login, history, alertUser } = this.props;
     const userInfo = await signUpUserFetch(this.state);
     if (!userInfo) {
-      return alertUser('Email has already been taken.')
+      return alertUser('Email has already been taken.');
     }
-    const newUser = {...this.state, id: userInfo.id}
+    const newUser = {...this.state, id: userInfo.id};
     login(newUser);
-    history.push('/user')
+    history.push('/user');
   }
 
   render() {
@@ -75,13 +76,19 @@ export class SignUpUser extends Component {
           If you already have an account, Log In here!
         </NavLink>
       </div>
-    )
+    );
   }
 }
+
+const { func } = PropTypes;
+SignUpUser.propTypes = {
+  login: func,
+  alertUser: func
+};
 
 export const mapDispatchToProps = (dispatch) => ({
   login: (user) => dispatch(loginUser(user)),
   alertUser: (message) => dispatch(alertUser(message))
-})
+});
 
 export default connect(null, mapDispatchToProps)(SignUpUser);

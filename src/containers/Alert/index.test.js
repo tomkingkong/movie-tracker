@@ -18,10 +18,10 @@ describe('Alert', () => {
     it('should have access to movies and user\'s favorites arrays', () => {
       const mockStore = {
         alertMsg: 'Alert!'
-      }
-      const expected = {...mockStore}
+      };
+      const expected = {...mockStore};
       const result = mapStateToProps(mockStore);
       expect(result).toEqual(expected);
     });
-  })
+  });
 });

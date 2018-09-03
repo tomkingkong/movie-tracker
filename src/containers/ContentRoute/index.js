@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import { fetchHanksMovies } from '../../Utilities/fetchApi';
 import { displayHanksMovies } from '../../actions';
@@ -21,17 +22,24 @@ export class ContentRoute extends Component {
         <Route exact path='/favorites' render={({history}) => (<MoviesContainer movies={favorites} history={history}/>)} />
         <Route path='/' render={({history}) => (<MoviesContainer movies={movies} history={history}/>)} />
       </Switch>
-    )
+    );
   }
 }
+
+const { array, func } = PropTypes;
+ContentRoute.propTypes = {
+  movies: array,
+  favorites: array,
+  displayHanksMovies: func
+};
 
 export const mapStateToProps = ({ movies, favorites }) => ({
   movies,
   favorites
-})
+});
 
 export const mapDispatchToProps = (dispatch) => ({
   displayHanksMovies: (movies) => dispatch(displayHanksMovies(movies))
-})
+});
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ContentRoute));

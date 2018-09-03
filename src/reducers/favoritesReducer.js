@@ -1,13 +1,14 @@
 export const favoritesReducer = (state = [], action) => {
-  switch(action.type) {
+  switch (action.type) {
     case 'UPDATE_FAVORITES':
       return action.movies || [];
     case 'ADD_FAVORITE':
       return [...state, action.movie];
-    case 'REMOVE_FAVORITE':
+    case 'REMOVE_FAVORITE': {
       const newFavorites = state.filter(movie => movie.movie_id !== action.movieId);
-      return newFavorites;
+      return newFavorites; 
+    }
     default:
       return state;
   }
-}
+};

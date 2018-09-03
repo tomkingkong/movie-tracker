@@ -3,15 +3,15 @@ import { cleanMovieData } from './Cleaner';
 
 export const fetchCurry = (originUrl) => (...paths) => (method='') => async (body={}, options) => {  
   const url = originUrl + paths.join('');
-  const payload =  options || { method, body: JSON.stringify(body), headers: {'Content-Type': 'application/json'} };
+  const dataPayload =  options || { method, body: JSON.stringify(body), headers: {'Content-Type': 'application/json'} };
   try {
-    const response = await fetch(url, payload)
+    const response = await fetch(url, dataPayload);
     const status = await response.json();
     return status;
   } catch (error) {
     return false;
   }
-}
+};
 
 const users = 'http://localhost:3000/api/users/';
 
@@ -23,7 +23,7 @@ export const logInUserFetch = (user) => fetchCurry(users)()('POST')(user);
 
 export const fetchHanksMovies = async () => {
   const imdb = 'https://api.themoviedb.org/3/person/31/movie_credits?api_key=';
-  const hanksCredits = await fetchCurry(imdb)(API_KEY, '&language=en-US')()({},{});
+  const hanksCredits = await fetchCurry(imdb)(API_KEY, '&language=en-US')()({}, {});
   if (!hanksCredits) return;
   const hanksMovies = hanksCredits.cast.map(credit => (cleanMovieData(credit)));
   return hanksMovies;

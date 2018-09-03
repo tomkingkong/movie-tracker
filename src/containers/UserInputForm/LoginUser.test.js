@@ -16,14 +16,14 @@ describe('LogInUser', () => {
 
     beforeEach(() => {
       login = jest.fn(); 
-      history = { push: jest.fn().mockImplementation(() => ({location:'/user'}))}
+      history = { push: jest.fn().mockImplementation(() => ({location:'/user'}))};
       updateFavorites = jest.fn();
       alertUser = jest.fn();
-      e = {preventDefault:jest.fn()}
+      e = {preventDefault:jest.fn()};
 
       window.fetch = jest.fn().mockImplementation(() => (
         Promise.resolve({ json:() => Promise.resolve({data:{id:1}})})
-      ))
+      ));
 
       wrapper = shallow(
         <LogInUser 
@@ -31,8 +31,8 @@ describe('LogInUser', () => {
           history={history}
           updateFavorites={updateFavorites}
           alertUser={alertUser}
-        />)
-    })
+        />);
+    });
 
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot();
@@ -46,12 +46,12 @@ describe('LogInUser', () => {
     describe('handleChange', () => {
       it('should set state when invoked', () => {
         const wrapper = shallow(<LogInUser />);
-        let e = {target:{value:'foo', name:'email'}}
+        let e = {target:{value:'foo', name:'email'}};
         
         wrapper.instance().handleChange(e);
         expect(wrapper.state().email).toEqual('foo');
 
-        e = {target:{value:'foo', name:'password'}}
+        e = {target:{value:'foo', name:'password'}};
         wrapper.instance().handleChange(e);
         expect(wrapper.state().password).toEqual('foo');
       });
@@ -61,12 +61,12 @@ describe('LogInUser', () => {
       beforeEach(() => {
         window.fetch = jest.fn().mockImplementation(() => (
           Promise.resolve({ json:() => Promise.resolve({data:{id:1}})})
-        ))
+        ));
         login = jest.fn(); 
-        history = { push: jest.fn().mockImplementation(() => ({location:'/user'}))}
+        history = { push: jest.fn().mockImplementation(() => ({location:'/user'}))};
         updateFavorites = jest.fn();
         alertUser = jest.fn();
-        e = {preventDefault:jest.fn()}
+        e = {preventDefault:jest.fn()};
 
         wrapper = shallow(
           <LogInUser 
@@ -74,13 +74,13 @@ describe('LogInUser', () => {
             history={history}
             updateFavorites={updateFavorites}
             alertUser={alertUser}
-          />)
-      })
+          />);
+      });
 
       it('should call alertUser if fetch rejected', async () => {
         window.fetch = jest.fn().mockImplementation(() => {
-          Promise.resolve({ json:() => Promise.reject()})
-        })
+          Promise.resolve({ json:() => Promise.reject()});
+        });
         await wrapper.instance().handleSubmit(e);
         expect(alertUser).toHaveBeenCalled();
       });
@@ -101,7 +101,7 @@ describe('LogInUser', () => {
       });
     });
 
-  })
+  });
 
   describe('mapDispatchToProps', () => {
     it('should log in a user', () => {
@@ -127,5 +127,5 @@ describe('LogInUser', () => {
       mappedProps.updateFavorites([]);
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
-  })
+  });
 });

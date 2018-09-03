@@ -15,7 +15,7 @@ describe('ContentRoute container', () => {
     mockFn = jest.fn();
     movies = [];
     favorites = [];
-  })
+  });
 
   it('should match snapshot with the / path', () =>{
     wrapper = shallow(
@@ -58,8 +58,8 @@ describe('ContentRoute container', () => {
   });
 
   it('should call displayHanksMovies on componentDidMount', async () =>{
-    let mockHanksMovies = {cast:[]}
-    let mockFn = jest.fn().mockImplementation(() => (mockHanksMovies))
+    let mockHanksMovies = {cast:[]};
+    let mockFn = jest.fn().mockImplementation(() => (mockHanksMovies));
     window.fetch = jest.fn().mockImplementation(() => {
       return Promise.resolve({
         json: () => Promise.resolve(mockHanksMovies)
@@ -80,12 +80,12 @@ describe('ContentRoute container', () => {
       const mockStore = {
         favorites: [],
         movies: []
-      }
-      const expected = {...mockStore}
+      };
+      const expected = {...mockStore};
       const result = mapStateToProps(mockStore);
       expect(result).toEqual(expected);
     });
-  })
+  });
 
   describe('mapDispatchToProps', () => {
     it('should display Tom Hanks movies', () => {
@@ -95,5 +95,5 @@ describe('ContentRoute container', () => {
       mappedProps.displayHanksMovies([]);
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
-  })
-})
+  });
+});

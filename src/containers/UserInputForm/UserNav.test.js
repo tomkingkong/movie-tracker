@@ -12,15 +12,15 @@ describe('UserNav Component', () => {
   beforeEach(() => {
     logout = jest.fn(); 
     clearFavorites = jest.fn();
-    user = { name:'tim' }
+    user = { name:'tim' };
 
     wrapper = shallow(
       <UserNav 
         logout={logout}
         clearFavorites={clearFavorites}
         user={user}
-      />)
-  })
+      />);
+  });
 
   it('should match snapshot', () => {
     expect(wrapper).toMatchSnapshot();
@@ -37,19 +37,19 @@ describe('UserNav Component', () => {
       const name = 'Tim';
       const id = 2;
       const email = 'foo@barr';
-      const password = 'oops'
+      const password = 'oops';
       const mockStore = {
         user: {name, id, email, password},
         movies: [],
         favorites: []
-      }
+      };
       const expected = {
         user: {name, id, email, password}
-      }
+      };
       const result = mapStateToProps(mockStore);
       expect(result).toEqual(expected);
     });
-  })
+  });
 
   describe('mapDispatchToProps', () => {
     it('should log out a user', () => {
@@ -67,6 +67,6 @@ describe('UserNav Component', () => {
       mappedProps.clearFavorites([]);
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
-  })
+  });
 
 });

@@ -1,12 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 export const Alert = ({ alertMsg }) => {
   return (
     <h4>{ alertMsg }</h4>
-  )
-}
+  );
+};
 
-export const mapStateToProps = ({ alertMsg }) => ({ alertMsg })
+Alert.propTypes = {
+  alertMsg: PropTypes.string 
+};
+
+export const mapStateToProps = ({ alertMsg }) => ({ alertMsg });
 
 export default connect(mapStateToProps, null)(Alert);
+

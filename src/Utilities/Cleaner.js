@@ -10,7 +10,7 @@ export const cleanMovieData = (fetchedMovie) => {
     release_date: fetchedMovie.release_date
   };
   return cleanMovie;
-}
+};
 
 const { string, number, shape } = PropTypes;
 cleanMovieData.propTypes = {
@@ -20,6 +20,6 @@ cleanMovieData.propTypes = {
     poster_path: string,
     id: number,
     overview: string,
-    release_date: string,
+    release_date: string
   })
-}
+};

@@ -13,7 +13,7 @@ describe('cleanMovieData', () => {
       id: 1,
       overview: 'overview',
       release_date: 'release'
-    }
+    };
 
     const expected = {
       title: 'title',
@@ -22,7 +22,7 @@ describe('cleanMovieData', () => {
       movie_id: 1,
       overview: 'overview',
       release_date: 'release'
-    }
+    };
     
     const result = cleanMovieData(dirtyMovie);
     expect(result).toEqual(expected);

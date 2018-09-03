@@ -11,7 +11,7 @@ class App extends Component {
       <div className="App">
         <header className="header">
           <h1 className="title">Hanks Movies</h1>
-            <FormRoute />
+          <FormRoute />
         </header>
         <ContentRoute />
       </div>
