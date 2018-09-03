@@ -10,7 +10,7 @@ class App extends Component {
     return (
       <div className="App">
         <header className="header">
-          <h1 className="title">Hanks Movies</h1>
+          <h1 className="title">HANKY PANKY</h1>
             <FormRoute />
         </header>
         <ContentRoute />
