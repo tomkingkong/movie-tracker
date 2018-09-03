@@ -69,6 +69,18 @@ describe('Card component', () => {
     expect(wrapper.state().favorite).toEqual(true);
   });
 
+  it('should not toggle favorite to true on mount if matching a favorite movie', async () => {
+    wrapper = shallow(
+      <Card 
+        movie={mockMovie}
+        favorites={[]}
+        history={mockHistory} 
+        key={mockMovie.title+1}  
+      />);
+    wrapper.instance().componentDidMount();
+    expect(wrapper.state().favorite).toEqual(false);
+  });
+
   it('should switch toggleinfo to true on click', () => {
     wrapper = shallow(
       <Card 
