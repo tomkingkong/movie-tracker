@@ -117,24 +117,22 @@ describe('fetchCurry', () => {
   });
   });
 
-  describe('userLogIn', () => {
-    it('should be called with the correct params', async () => {
-      const user = [
-        "tman2272@aol.com",
-        'password'
-      ]
-      const expected = ["http://localhost:3000/api/users",
-      {
+  describe('addFavoriteFetch', () => {
+    it('should take a movie and add to database', async () => {
+      const mockUrl = "http://localhost:3000/api/users/favorites/new";
+      const payload = {
         method: 'POST',
-        body: JSON.stringify(...user),
-        headers: {
-          'Content-Type': 'application/json'
+        body: JSON.stringify(mockMovie),
+        headers: {"Content-Type": "application/json"}
         }
-      }];
-
-      await userLogIn(...user);
-
-      expect(window.fetch).toHaveBeenCalledWith(...expected)
+      const expected = [mockUrl, payload]
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve( )
+      }));
+      await addFavoriteFetch(mockMovie);
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+    });
     });
 
     it('should return an alert if there is no user', async () => {
