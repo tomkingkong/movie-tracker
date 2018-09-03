@@ -12,14 +12,25 @@ body {
   margin: 0;
 }
 
+.header {
+  background-color: rgba(0, 98, 178, 0.4);
+  height: 7rem;
+  -webkit-box-shadow: 10px 10px 63px 60px rgba(9,11,36,1);
+  -moz-box-shadow: 10px 10px 63px 60px rgba(9,11,36,1);
+  box-shadow: 10px 10px 63px 60px rgba(9,11,36,1);
+  // border: 40px solid #2a2c36;
+}
+
 .title {
+  background-color: $mainYellow;
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
   margin: 0 auto;
   border: none;
-  font: normal 82px/normal "Anton", Helvetica, sans-serif;
-  color: rgb(112, 112, 112);
+  font: Fenice bold;
+  // font: normal 82px/normal "Anton", Helvetica, sans-serif;
+  color: rgba(0, 98, 178, 0.4);
   text-align: left;
   text-transform: uppercase;
   font-size: 2.5rem;

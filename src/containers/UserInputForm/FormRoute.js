@@ -14,7 +14,7 @@ export const FormRoute = () => {
       <Route exact path="/signup" component={SignUpUser} />
       <Route exact path="/:user_id" component={UserNav} />
     </Switch>
-  )
-}
+  );
+};
 
 export default withRouter(FormRoute);
