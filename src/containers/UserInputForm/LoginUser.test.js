@@ -84,8 +84,11 @@ describe('LogInUser', () => {
         await wrapper.instance().handleSubmit(e);
         expect(alertUser).toHaveBeenCalled();
       });
+  
+      it('should fetch user favorites if log in fetch passes', async () =>{
+        await wrapper.instance().handleSubmit(e);
+        expect(updateFavorites).toHaveBeenCalled();
     });
-  })
 
   describe('mapStateToProps', () => {
     
