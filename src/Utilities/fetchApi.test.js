@@ -54,21 +54,28 @@ describe('fetchCurry', () => {
     });
   })
 
-  describe('addUserFavorite', () => {
-    let mockOptions;
-    beforeEach(() => {
-      mockOptions = {
+  describe('signUpUserFetch', () => {
+    it('should take new user info and add to database', async () => {
+      const mockUser = { 
+        name: 'tim',
+        email: 'tim@tim',
+        password: 'password'
+      }
+      const mockUrl = "http://localhost:3000/api/users/new"
+      const payload = {
         method: 'POST',
-        body: JSON.stringify({
-          user_id: 1,
-          ...mockMovie
-        }),
-        headers: {'Content-Type': 'application/json'}
-      };
+        body: JSON.stringify(mockUser),
+        headers: {"Content-Type": "application/json"}
+      }
+      const expected = [mockUrl, payload];
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve( )
+      }));
+      await signUpUserFetch(mockUser);
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
     });
-    it('should be invoked with correct params', () => {
-      const mockUrl = "http://localhost:3000/api/users/favorites/new"
-      const expected = [mockUrl, mockOptions];
+  })
 
       addUserFavorite(1, mockMovie);
       expect(window.fetch).toHaveBeenCalledWith(...expected)
