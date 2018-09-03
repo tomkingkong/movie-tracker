@@ -41,7 +41,7 @@ describe('favoritesReducer', () => {
     const expected = [];
     const result = favoritesReducer(initialState, actions.updateFavorites(false));
     expect(result).toEqual(expected);
-});
+  });
 });
 
 describe('moviesReducer', () => {
@@ -56,6 +56,13 @@ describe('moviesReducer', () => {
     const movies = [{title: 'Big'}, {title: 'Big'}];
     const expected = [...movies];
     const result = moviesReducer(initialState, actions.displayHanksMovies(movies));
+    expect(result).toEqual(expected);
+  });
+
+  it('should default to an empty array if updated with false', () => {
+    const initialState = [{title: 'Big'}, {title: 'Big'}];
+    const expected = [];
+    const result = moviesReducer(initialState, actions.displayHanksMovies(false));
     expect(result).toEqual(expected);
   });
 });
