@@ -1,7 +1,59 @@
 $blue: #3084de;
 $burntOrange: rgb(193, 117, 59);
 $mainYellow: #f9f14d;
-$mainGrn: #133f37;
+$mainGrn: #1a282b;
+$mainLight: #edfcff;
+
+%navBtn-shared {
+  font-size: 1rem;
+  background: #edfcff;
+  border: 2px solid #1a282b;
+  border-radius: 0 0 8px 0;
+  color: $mainGrn;
+  height: 3rem;
+  margin: 0 5rem 0 0;
+  width: 7rem;
+}
+
+%linkBtn-shared {
+  background: #c7d3d6;
+  border: 2px solid #1a282b;
+  border-radius: 8px 0 8px 0;
+  color: $mainGrn;
+  font-size: .8rem;
+  height: 3rem;
+  margin: 0 3rem 0 0;
+  padding: .5rem;
+  width: 9rem;
+  text-decoration: none;
+}
+
+%clearLink-shared {
+  border: 3px solid #1a282b;
+  border-radius: 8px 0 8px 0;
+  color: $mainLight;
+  font-size: 1.2rem;
+  font-weight: 800;
+  height: 3rem;
+  margin: 0 0.5rem;
+  text-decoration: none;
+  width: 9rem;
+}
+
+.header {
+  background-color: rgba(26, 33, 34, 0.8);
+  height: 8rem;
+  box-shadow: 0px 16px 57px -2px rgba(26, 33, 34, 1);
+  margin: 0 0 1rem 0;
+  padding: 0.5rem 0 0.5rem 0;
+    h1 {
+      color: rgb(255, 250, 240);
+      padding: 0.1rem 0 0 10%;
+      background: #E97223;
+      font-family: 'Satisfy';
+      margin: .5rem 0 .5rem 0;
+    }
+}
 
 .NavBar {
   position: relative;
@@ -9,42 +61,73 @@ $mainGrn: #133f37;
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
-  margin: 1rem;
     h3 {
       color: #2d2d2d;
-      margin: 0 0 0 0.4rem;
+      margin: 0 5rem 0 0.4rem;
     }
     h3::before {
       content: 'Welcome, ';
     }
     .btn {
+      @extend %clearLink-shared;
       display: flex;
       justify-content: center;
       align-items: center;
-      margin: 0 0.5rem;
-      min-height: 2rem;
-      height: 100%;
-      max-height: 4rem;
-      padding: 0.4rem;
-      text-decoration: none;
+      border-radius: 8px 0 8px 0;
     }
-    .favorites {
-      background: red;
+    
+  }
+
+  .log-out {
+    background: none;
+    border: 2px solid #edfcff;
+    border-radius: 8px 0 8px 0;
+    font-size: .7rem;
+    color: $mainLight;
+    margin: 0 1rem 0 0;
+    min-height: 3rem;
+    padding: .5rem;
+  }
+
+  .log-out:hover {
+    border: 2px solid $mainYellow;
+    color: $mainYellow;
+  }
+
+  form {
+    input, button, .NavLink {
+      box-shadow: 0px 5px 8px 0px rgba(26, 40, 43, .5);
     }
-    .discover {
-      background: green;
+    .login-btn {
+      @extend %navBtn-shared;
+      
     }
-}
-
-.NavLink {
-  width: 100%;
-  margin: 0 0.5rem;
-}
-
-.active {
-  // background-color: blue;
-}
-
+    .email-input,
+    .password-input {
+      background: #1a282b;
+      border: 2px solid #1a282b;
+      height: 2rem;
+      margin: 0 0 2rem 0;
+      padding: .3rem 0 .3rem 1rem;
+    }
+    .email-input::placeholder,
+    .password-input::placeholder {
+      color: $mainYellow;
+      font-size: 1.5rem;
+      padding: .3rem 0 .3rem 1rem;
+    }
+    .email-input {
+      border-radius: 8px 0 0 0;
+      margin: 0 .5rem 0 0;
+    }
+    .NavLink {
+      @extend %linkBtn-shared
+    }
+    button:hover, .NavLink:hover {
+      background: #f9af4d;
+    }
+  }
+  
 .tooltip {
   color: #FFF;
   cursor: pointer;
@@ -72,7 +155,7 @@ $mainGrn: #133f37;
   border-color: $blue transparent transparent transparent;
   top: 1.5rem;
   right: 0.25rem;
-  transform: translateY(-10px);
+  transform: translate(-10px);
 }
 
 .tooltip:after {
@@ -97,17 +180,21 @@ $mainGrn: #133f37;
   z-index: 9999;
 }
 
+.signup-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
 .signup-cont {
   align-self: center;
-  background: $mainYellow;
-  border: 3px solid $mainGrn;
+  background-color: rgba(118, 186, 199, .95);
+  border: 3px solid #edfcff;
   border-radius: 0.2rem;
   color: $mainGrn;
-  left: 30%;
   margin: 0 auto;
   padding: 1rem;
   position: fixed;
-  top: 20%;
+  top: 5%;
   width: 25rem;
   z-index: 9999;
     h4 {
@@ -116,7 +203,7 @@ $mainGrn: #133f37;
       margin: 0 0 1rem 0;
     }
     input {
-      background: #f9f5b3;
+      background: #edfcff;
       border: 3px solid $mainGrn;
       border-radius: 0.2rem;
       color: #133f37;
@@ -130,19 +217,25 @@ $mainGrn: #133f37;
     button {
       background: $mainGrn;
       border: 0;
-      color: $mainYellow;
+      border-radius: 8px 0 8px 0;
+      color: $mainLight;
       cursor: pointer;
-      font-size: 1rem;
-      height: 1.5rem;
+      font-size: .9rem;
+      height: 1.8rem;
       width: 5rem;
     }
     button:hover {
-      background: #e57e00;
-    }
-    .NavLink {
-      color: #355053;
+      color: $mainGrn;
+      background: $mainYellow;
     }
     .NavLink:hover {
-      color: #e57e00;
+      color: $mainLight;
     }
-}
+    .NavLink {
+      color: $mainGrn;
+    }
+  }
+
+  
+
+  
