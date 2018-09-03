@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { addUserFavorite, removeUserFavorite, addFavoriteFetch, removeFavoriteFetch } from '../../Utilities/fetchApi';
+import { addFavoriteFetch, removeFavoriteFetch } from '../../Utilities/fetchApi';
 import { removeFavorite, addFavorite } from '../../actions';
 import './Card.css';
 
@@ -36,10 +36,10 @@ export class Card extends Component {
     }
     if (userFavorites.includes(movie.movie_id)) {
       removeFavoriteFromStore(movie.movie_id);
-      removeUserFavorite(user.id, movie.movie_id);
+      removeFavoriteFetch(user.id, movie.movie_id);
     } else {
       addFavoriteToStore(movie);
-      addUserFavorite(user.id, movie);
+      addFavoriteFetch({ user_id: user.id, ...movie });
     }
     this.setState({favorite: !this.state.favorite})
   }
@@ -61,9 +61,9 @@ export class Card extends Component {
   }
 }
 
-const mapStateToProps = ({ user, favorites }) => ({ user, favorites });
+export const mapStateToProps = ({ user, favorites }) => ({ user, favorites });
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   addFavoriteToStore: (movie) => dispatch(addFavorite(movie)),
   removeFavoriteFromStore: (movieId) => dispatch(removeFavorite(movieId))
 })

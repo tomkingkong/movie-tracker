@@ -1,4 +1,6 @@
 export const mockMovie = {
+  user_id: 1,
+  id: 1,
   title: "Forrest Gump",
   vote_average: 8.4,
   poster_path: "https://image.tmdb.org/t/p/w500/yE5d3BUhE8hCnkMUJOo1QDoOGNz.jpg",
@@ -70,3 +72,10 @@ export const hanksCredits = {
       "title": "The Simpsons Movie",
       "vote_average": 6.9
     }]
+
+    export const mockUser = {
+      email: 'tim@tim',
+      password: 'password'
+    }
+
+    export const mockDelete = ["http://localhost:3000/api/users/1/favorites/13", {"body": "{\"user_id\":1,\"movie_id\":13}", "headers": {"Content-Type": "application/json"}, "method": "DELETE"}]

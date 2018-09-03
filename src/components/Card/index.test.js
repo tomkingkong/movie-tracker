@@ -1,16 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { createMockStore } from 'redux-test-utils';
 
-import { Card } from '.';
+import { removeFavorite, addFavorite } from '../../actions';
+import { Card, mapStateToProps, mapDispatchToProps } from '.';
 
 describe('Card component', () => {
   let mockHistory;
-  let testState;
   let mockMovie;
   let mockUser;
   let wrapper;
-  let store;
   let mockRemoveFavorite;
   let mockAddFavorite;
   let mockFn;
@@ -18,7 +16,7 @@ describe('Card component', () => {
 
   beforeEach(() => {
     window.fetch = jest.fn().mockImplementation(() => {
-      Promise.resolve({ json:() => Promise.resolve({})})
+      return Promise.resolve({ json:() => Promise.resolve({})})
     })
     mockRemoveFavorite = jest.fn();
     mockAddFavorite = jest.fn();
