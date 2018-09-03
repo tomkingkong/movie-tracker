@@ -1,6 +1,7 @@
 .Card {
   cursor: pointer;
-  box-shadow: 0px 0px 15px 5px rgba(41, 48, 53, 0.3);
+  // box-shadow: 0px 0px 15px 5px rgba(41, 48, 53, 0.3);
+  transition: box-shadow .5s;
   border: 0.25rem solid #fff;
   display: inline-block;
   position: relative;
@@ -9,8 +10,10 @@
   width: 100%;
   min-width: 12rem;
   max-width: 15rem;
-  transform: all 0.2s linear;
+  // transform: all 0.2s linear;
 }
+
+
 
 .Card img {
   display: block;
@@ -18,23 +21,18 @@
   z-index: -10;
 }
 
-.Card h1 {
-  color: #fff;
-  background: #23282dcb;
-  font-size: 150%;
-  position: absolute;
-  top: 25rem;
-  padding: 1rem;
-  margin: 0;
-  width: inherit;
-  z-index: -99;
-  text-align: center;
-  transition: all 0.25s linear;
-}
-
-// .Card:hover h1 {
-//   top: 10rem;
-//   bottom: -2rem;
+// .Card h1 {
+//   color: #fff;
+//   background: #23282dcb;
+//   font-size: 150%;
+//   position: absolute;
+//   top: 25rem;
+//   padding: 1rem;
+//   margin: 0;
+//   width: inherit;
+//   z-index: -99;
+//   text-align: center;
+//   transition: all 0.25s linear;
 // }
 
 .description {
@@ -48,6 +46,10 @@
   height: 100%;
   width: 100%;
   transition: all 0.20s linear;
+}
+
+.description:hover {
+  box-shadow: 0 0 70px rgba(33,33,33,.2); 
 }
 
 .show .description {
@@ -76,11 +78,8 @@
 }
 
 .after-star {
-  background: url("../../images/star2.png") no-repeat center center;
-  // height: .5rem;
-  // width: .5rem; 
+  background: url("../../images/star2.png") no-repeat center center; 
   background-size: 50% 50%;
-  // background-color: #e97223;
   background-color: #76bab7;
 }
 
