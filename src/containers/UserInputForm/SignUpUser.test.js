@@ -45,35 +45,44 @@ describe('SignUpUser', () => {
         const wrapper = shallow(<SignUpUser />);
         let e = {target:{value:'foo', name:'email'}}
 
-        wrapper.find('.name-input').simulate('change', mockEvent);
-        expect(spy).toHaveBeenCalled();
-      });
+        wrapper.instance().handleChange(e);
+        expect(wrapper.state().email).toEqual('foo');
 
-      it('should be invoked when email is changed', () => {
-        const spy = spyOn(wrapper.instance(), 'handleChange');
-        wrapper.instance().forceUpdate();
-        const mockEvent = {target: { name: 'email', value: 'wil@yahoo.com'}};
+        e = {target:{value:'foo', name:'password'}}
+        wrapper.instance().handleChange(e);
+        expect(wrapper.state().password).toEqual('foo');
 
-        wrapper.find('.email-input').simulate('change', mockEvent);
-        expect(spy).toHaveBeenCalled();
-      });
-
-      it('should be invoked when password is changed', () => {
-        const spy = spyOn(wrapper.instance(), 'handleChange');
-        wrapper.instance().forceUpdate();
-        const mockEvent = {target: { name: 'password', value: 'bingo'}};
-
-        wrapper.find('.password-input').simulate('change', mockEvent);
-        expect(spy).toHaveBeenCalled();
-      });
-
-      it('should set state when invoked', () => {
-        const mockEvent = {target: { name: 'email', value: 'wil@yahoo.com'}}
-
-        wrapper.instance().handleChange(mockEvent);
-        expect(wrapper.state().email).toBe('wil@yahoo.com');
+        e = {target:{value:'foo', name:'username'}}
+        wrapper.instance().handleChange(e);
+        expect(wrapper.state().username).toEqual('foo');
       });
     });
+
+    describe('handleSubmit', () => {
+      beforeEach(() => {
+        window.fetch = jest.fn().mockImplementation(() => (
+          Promise.resolve({ json:() => Promise.resolve({id:1})})
+        ))
+        login = jest.fn(); 
+        history = { push: jest.fn().mockImplementation(() => ({location:'/user'}))}
+        alertUser = jest.fn();
+        e = {preventDefault:jest.fn()}
+
+        wrapper = shallow(
+          <SignUpUser 
+            login={login}
+            history={history}
+            alertUser={alertUser}
+          />)
+      })
+
+      it('should call alertUser if fetch rejected', async () => {
+        window.fetch = jest.fn().mockImplementation(() => (
+          Promise.resolve({ json:() => Promise.reject()})
+        ))
+        await wrapper.instance().handleSubmit(e);
+        expect(alertUser).toHaveBeenCalled();
+      });
 
     describe.skip('handleSubmit', () => {
       it('should invoke handleSubmit when form is submitted', () => {
