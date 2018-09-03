@@ -1,7 +1,5 @@
-import React from 'react';
-import { shallow } from 'enzyme';
 import { API_KEY } from '../key';
-import { discoverMovies, fetchUserFavorites, addUserFavorite, removeUserFavorite, userSignUp, userLogIn } from './fetchApi';
+import { fetchCurry, fetchHanksMovies, signUpUserFetch, fetchFavorites, logInUserFetch, addFavoriteFetch, removeFavoriteFetch } from './fetchApi';
 import { mockMovie, hanksCredits, cleanedHanksCredits } from './mockData';
 
 describe('fetchCurry', () => {
@@ -23,12 +21,15 @@ describe('fetchCurry', () => {
     expect(result).toEqual(expectedUserData);
     });
     
-    it('should be invoked with correct params', async () => {
-      const expected = `https://api.themoviedb.org/3/person/31/movie_credits?api_key=${API_KEY}&language=en-US`;
+  it('should return false if no data came back', async () => {
+    const mockUser = { email: 'tim@tim', password: 'password' };
+    const expectedUserData = { name: 'Tim', email: 'tim@tim', password: 'password', id: 1 }
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      json: () => Promise.reject(expectedUserData)
+    }));
+    const result = await fetchCurry(database)()()()('POST')(mockUser);
 
-      await discoverMovies();
-
-      expect(window.fetch).toHaveBeenCalledWith(expected);
+    expect(result).toEqual(false);
     });
 
     it('should return an object if status code ok', async () => {
