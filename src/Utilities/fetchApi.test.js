@@ -1,5 +1,13 @@
 import { API_KEY } from '../key';
-import { fetchCurry, fetchHanksMovies, signUpUserFetch, fetchFavorites, logInUserFetch, addFavoriteFetch, removeFavoriteFetch } from './fetchApi';
+import { 
+  fetchCurry, 
+  fetchHanksMovies, 
+  signUpUserFetch, 
+  fetchFavorites, 
+  logInUserFetch, 
+  addFavoriteFetch, 
+  removeFavoriteFetch 
+} from './fetchApi';
 import { mockMovie, hanksCredits, cleanedHanksCredits } from './mockData';
 
 describe('fetchCurry', () => {
@@ -13,24 +21,24 @@ describe('fetchCurry', () => {
     const mockUser = { email: 'tim@tim', password: 'password' };
     const expectedUserData = { name: 'Tim', email: 'tim@tim', password: 'password', id: 1 }
 
-      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-        ok: true,
+    window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+      ok: true,
       json: () => Promise.resolve( expectedUserData )
-      }));
-    const result = await fetchCurry(database)()()()('POST')(mockUser);
+    }));
+    const result = await fetchCurry(database)()('POST')(mockUser);
     expect(result).toEqual(expectedUserData);
-    });
-    
+  });
+  
   it('should return false if no data came back', async () => {
     const mockUser = { email: 'tim@tim', password: 'password' };
     const expectedUserData = { name: 'Tim', email: 'tim@tim', password: 'password', id: 1 }
     window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
       json: () => Promise.reject(expectedUserData)
     }));
-    const result = await fetchCurry(database)()()()('POST')(mockUser);
+    const result = await fetchCurry(database)()('POST')(mockUser);
 
     expect(result).toEqual(false);
-    });
+  });
 
   describe('fetchHanksMovies', () => {
     it('should return Tom Hanks movies', async () => {
@@ -100,7 +108,7 @@ describe('fetchCurry', () => {
       const mockUser = {
         email: 'email@email',
         password: 'password'
-        }
+      }
       const mockUrl =  "http://localhost:3000/api/users/";
       const payload = {
         method: 'POST',
@@ -114,7 +122,7 @@ describe('fetchCurry', () => {
       }));
       await logInUserFetch(mockUser);
       expect(window.fetch).toHaveBeenCalledWith(...expected);
-  });
+    });
   });
 
   describe('addFavoriteFetch', () => {
@@ -124,7 +132,7 @@ describe('fetchCurry', () => {
         method: 'POST',
         body: JSON.stringify(mockMovie),
         headers: {"Content-Type": "application/json"}
-        }
+      }
       const expected = [mockUrl, payload]
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,
@@ -133,16 +141,23 @@ describe('fetchCurry', () => {
       await addFavoriteFetch(mockMovie);
       expect(window.fetch).toHaveBeenCalledWith(...expected);
     });
-    });
-
-    it('should return an alert if there is no user', async () => {
-      window.fetch = jest.fn().mockImplementation(() => Promise.reject({
-        
-      }));
-
-      await expect(userLogIn('email', 'password')).resolves.toEqual({
-        alert: 'Email and Password do not match.'
-      });
-    })
   });
-});
+
+  describe('removeFavoriteFetch', () => {
+    it('should take a user id and movie id and remove favorite from database', async () => {
+      const mockUrl = "http://localhost:3000/api/users/1/favorites/13";
+      const payload = {
+        method: 'DELETE',
+        body: JSON.stringify({user_id: 1, movie_id:13}),
+        headers: {"Content-Type": "application/json"}
+      }
+      const expected = [mockUrl, payload]
+      window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
+        ok: true,
+        json: () => Promise.resolve( )
+      }));
+      await removeFavoriteFetch(1, 13);
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
+    });
+  });
+})
