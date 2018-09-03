@@ -43,26 +43,16 @@ describe('fetchCurry', () => {
       expect(result).toEqual(expected);
     });
 
-      await fetchUserFavorites(1);
-
-      expect(window.fetch).toHaveBeenCalledWith(expected);
-    });
-
-    it('should return an object if status code is ok', async () => {
-      await expect(fetchUserFavorites(1)).resolves.toEqual(hanksCredits);
-    });
-
-    it('should return an alert object if status code is not ok', async () => {
-      const expected = {alert: 'Add to your favorites by selecting movies you like.'}
+    it('should be called with the correct params', async () => {
+      const expected = [`https://api.themoviedb.org/3/person/31/movie_credits?api_key=${API_KEY}&language=en-US`, {}];
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-        json: () => Promise.reject(expected)
+        ok: true,
+        json: () => Promise.resolve( )
       }));
-
-       const result = await fetchUserFavorites(1);
-       
-       await expect(result).toEqual(expected);
+      await fetchHanksMovies();
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
     });
-  });
+  })
 
   describe('addUserFavorite', () => {
     let mockOptions;
