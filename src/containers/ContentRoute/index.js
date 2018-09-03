@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 
-import { discoverMovies } from '../../Utilities/fetchApi';
+import { fetchHanksMovies } from '../../Utilities/fetchApi';
 import { displayHanksMovies } from '../../actions';
 import MoviesContainer from '../../components/MoviesContainer/';
 
@@ -10,7 +10,7 @@ export class ContentRoute extends Component {
   
   async componentDidMount() {
     const { displayHanksMovies } = this.props;
-    const hanksMovies = await discoverMovies();
+    const hanksMovies = await fetchHanksMovies();
     displayHanksMovies(hanksMovies);
   }
 
@@ -25,12 +25,12 @@ export class ContentRoute extends Component {
   }
 }
 
-const mapStateToProps = ({ movies, favorites }) => ({
+export const mapStateToProps = ({ movies, favorites }) => ({
   movies,
   favorites
 })
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   displayHanksMovies: (movies) => dispatch(displayHanksMovies(movies))
 })
 
