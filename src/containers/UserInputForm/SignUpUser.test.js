@@ -89,14 +89,9 @@ describe('SignUpUser', () => {
         expect(login).toHaveBeenCalled();
       });
 
-      it('should invoke alertUser if userInfo has alert', () => {
-        const mockAlertUser = jest.fn();
-        const mockEvent = { preventDefault: jest.fn() }
-        wrapper = shallow(<SignUpUser alertUser={mockAlertUser} />);
-        wrapper.setState({userInfo: {alert: 'bingo'}});
-        wrapper.instance().handleSubmit(mockEvent)
-
-        expect(mockAlertUser).toHaveBeenCalled()
+      it('should push user to new browser page of /user if fetch passes', async () =>{
+        await wrapper.instance().handleSubmit(e);
+        expect(history.push).toHaveBeenCalled();
       });
     });
   });
