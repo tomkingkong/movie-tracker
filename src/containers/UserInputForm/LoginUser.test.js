@@ -95,7 +95,13 @@ describe('LogInUser', () => {
         expect(login).toHaveBeenCalled();
       });
     
+      it('should push user to new browser page of /user if fetch passes', async () =>{
+        await wrapper.instance().handleSubmit(e);
+        expect(history.push).toHaveBeenCalled();
   });
+    });
+
+  })
 
   describe('mapDispatchToProps', () => {
 
