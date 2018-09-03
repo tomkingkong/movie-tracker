@@ -41,10 +41,9 @@ describe('SignUpUser', () => {
     });
 
     describe('handleChange', () => {
-      it('should be invoked when name is changed', () => {
-        const spy = spyOn(wrapper.instance(), 'handleChange');
-        wrapper.instance().forceUpdate();
-        const mockEvent = {target: { name: 'name', value: 'wil'}};
+      it('should set state when invoked', () => {
+        const wrapper = shallow(<SignUpUser />);
+        let e = {target:{value:'foo', name:'email'}}
 
         wrapper.find('.name-input').simulate('change', mockEvent);
         expect(spy).toHaveBeenCalled();
