@@ -33,7 +33,6 @@ describe('Card component', () => {
     mockUser = { id: 1, name:'tim' }
     mockHistory = { push: jest.fn().mockImplementation(() => {}) }
     testState = { movies: [mockMovie], favorites: [], user: {mockUser} };
-    store = createMockStore(testState);
   })
 
   it('should match snapshot with props passed', () => {
@@ -184,4 +183,38 @@ describe('Card component', () => {
     wrapper.find('button').simulate('click', e);
     expect(mockHistory.push).toHaveBeenCalled();
   });
+
+  describe('mapStateToProps', () => {
+    it('should have access to user and user\'s favorites array', () => {
+      const name = 'Tim';
+      const id = 2;
+      const email = 'foo@barr';
+      const password = 'oops'
+      const mockStore = {
+        user: {name, id, email, password},
+        favorites: []
+      }
+      const expected = {...mockStore}
+      const result = mapStateToProps(mockStore);
+      expect(result).toEqual(expected);
+    });
+  })
+
+  describe('mapDispatchToProps', () => {
+    it('should remove movie from user\s favorites', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = removeFavorite({});
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.removeFavoriteFromStore({});
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('should add favorite movie to user\'s favorites', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = addFavorite({});
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.addFavoriteToStore({});
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  })
 })
