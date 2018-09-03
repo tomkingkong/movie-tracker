@@ -90,7 +90,10 @@ describe('LogInUser', () => {
         expect(updateFavorites).toHaveBeenCalled();
     });
 
-  describe('mapStateToProps', () => {
+      it('should log in user if fetch passes', async () =>{
+        await wrapper.instance().handleSubmit(e);
+        expect(login).toHaveBeenCalled();
+      });
     
   });
 
