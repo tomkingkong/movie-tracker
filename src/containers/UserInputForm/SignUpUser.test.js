@@ -1,19 +1,43 @@
 import React from 'react';
 import { shallow } from 'enzyme';
+
 import { SignUpUser, mapDispatchToProps } from './SignUpUser';
 import { loginUser, alertUser } from '../../actions';
-import { debug } from 'util';
+
 
 describe('SignUpUser', () => {
   describe('SignUpUser Component', () => {
     let wrapper;
+    let login; 
+    let history; 
+    let alertUser;
+    let e;
 
     beforeEach(() => {
-      wrapper = shallow(<SignUpUser />);
-    });
+      login = jest.fn(); 
+      history = { push: jest.fn().mockImplementation(() => ({location:'/user'}))}
+      alertUser = jest.fn();
+      e = {preventDefault:jest.fn()}
+
+      window.fetch = jest.fn().mockImplementation(() => (
+        Promise.resolve({ json:() => Promise.resolve({id:1})})
+      ))
+
+      wrapper = shallow(
+        <SignUpUser 
+          login={login}
+          history={history}
+          alertUser={alertUser}
+        />)
+    })
 
     it('should match snapshot', () => {
       expect(wrapper).toMatchSnapshot()
+    });
+
+    it('should call a reset on alert user on link to log in', () => {
+      wrapper.find('NavLink').simulate('click');
+      expect(alertUser).toHaveBeenCalled();
     });
 
     describe('handleChange', () => {
