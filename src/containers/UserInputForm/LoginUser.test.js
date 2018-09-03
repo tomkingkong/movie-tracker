@@ -58,8 +58,31 @@ describe('LogInUser', () => {
     });
 
     describe('handleSubmit', () => {
-      it('should set state when invoked', () => {
+      beforeEach(() => {
+        window.fetch = jest.fn().mockImplementation(() => (
+          Promise.resolve({ json:() => Promise.resolve({data:{id:1}})})
+        ))
+        login = jest.fn(); 
+        history = { push: jest.fn().mockImplementation(() => ({location:'/user'}))}
+        updateFavorites = jest.fn();
+        alertUser = jest.fn();
+        e = {preventDefault:jest.fn()}
 
+        wrapper = shallow(
+          <LogInUser 
+            login={login}
+            history={history}
+            updateFavorites={updateFavorites}
+            alertUser={alertUser}
+          />)
+      })
+
+      it('should call alertUser if fetch rejected', async () => {
+        window.fetch = jest.fn().mockImplementation(() => {
+          Promise.resolve({ json:() => Promise.reject()})
+        })
+        await wrapper.instance().handleSubmit(e);
+        expect(alertUser).toHaveBeenCalled();
       });
     });
   })
