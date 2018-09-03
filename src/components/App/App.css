@@ -1,5 +1,5 @@
 html {
-  background-image: url("../../images/concrete.jpg");
+  background-image: url("../../images/brick.jpg");
   background-repeat: repeat; 
 }
 
@@ -34,3 +34,4 @@ body {
   text-overflow: clip;
   letter-spacing: 3px; 
 }
+

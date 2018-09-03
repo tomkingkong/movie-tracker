@@ -24,7 +24,7 @@ export const UserNav = ({ user, clearFavorites, logout }) => {
         Discover Hanks Movies
       </Link>
       <Link to="/" replace>
-        <button onClick={handleLogOut}>Log Out</button>
+        <button className="log-out" onClick={handleLogOut}>Log Out</button>
       </Link>
     </div>
   );

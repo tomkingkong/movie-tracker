@@ -43,7 +43,8 @@ export class LogInUser extends Component {
     return (
       <div className="NavBar">
         <form onSubmit={this.handleSubmit}>
-          <input 
+          <input
+            className='email-input' 
             required
             type='email'
             placeholder='Email'
@@ -53,6 +54,7 @@ export class LogInUser extends Component {
             onChange={this.handleChange}
           />
           <input
+            className='password-input'
             required
             placeholder='Password'
             value={password}
@@ -60,7 +62,7 @@ export class LogInUser extends Component {
             className='login-input'
             onChange={this.handleChange}
           />
-          <button className="login-button">Login</button>
+          <button className='login-btn'>Login</button>>>>>>>> master
           <NavLink className="NavLink" to='/signup' onClick={() => alertUser('')}>
             Sign Up
           </NavLink>
