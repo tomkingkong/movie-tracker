@@ -4,7 +4,16 @@ exports[`matches snapshot 1`] = `
 <div
   className="App"
 >
-  <withRouter() />
+  <header
+    className="header"
+  >
+    <h1
+      className="title"
+    >
+      Hanks Movies
+    </h1>
+    <withRouter() />
+  </header>
   <withRouter(Connect(ContentRoute)) />
 </div>
 `;

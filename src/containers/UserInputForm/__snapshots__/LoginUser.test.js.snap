@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogInUser LogInUser Component should match snapshot 1`] = `
+<div
+  className="NavBar"
+>
+  <form
+    onSubmit={[Function]}
+  >
+    <input
+      name="email"
+      onChange={[Function]}
+      placeholder="Email"
+      required={true}
+      type="email"
+      value=""
+    />
+    <input
+      name="password"
+      onChange={[Function]}
+      placeholder="Password"
+      required={true}
+      value=""
+    />
+    <button>
+      Login
+    </button>
+    <NavLink
+      activeClassName="active"
+      aria-current="page"
+      className="NavLink"
+      onClick={[Function]}
+      to="/signup"
+    >
+      Sign Up
+    </NavLink>
+  </form>
+  <Connect(Component) />
+</div>
+`;
