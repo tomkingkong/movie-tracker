@@ -35,6 +35,13 @@ describe('favoritesReducer', () => {
     const result = favoritesReducer(initialState, actions.updateFavorites(movies));
     expect(result).toEqual(expected);
   });
+
+  it('should default to an empty array if favorites is updated with false', () => {
+    const initialState = [{}];
+    const expected = [];
+    const result = favoritesReducer(initialState, actions.updateFavorites(false));
+    expect(result).toEqual(expected);
+});
 });
 
 describe('moviesReducer', () => {
