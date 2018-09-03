@@ -44,7 +44,7 @@ describe('SignUpUser', () => {
       it('should set state when invoked', () => {
         const wrapper = shallow(<SignUpUser />);
         let e = {target:{value:'foo', name:'email'}}
-
+        
         wrapper.instance().handleChange(e);
         expect(wrapper.state().email).toEqual('foo');
 
@@ -83,41 +83,34 @@ describe('SignUpUser', () => {
         await wrapper.instance().handleSubmit(e);
         expect(alertUser).toHaveBeenCalled();
       });
-
+  
       it('should log in user if fetch passes', async () =>{
         await wrapper.instance().handleSubmit(e);
         expect(login).toHaveBeenCalled();
       });
-
+  
       it('should push user to new browser page of /user if fetch passes', async () =>{
         await wrapper.instance().handleSubmit(e);
         expect(history.push).toHaveBeenCalled();
       });
     });
   });
+
   describe('mapDispatchToProps', () => {
-    it.skip('should dispatch loginUser action when login is invoked', () => {
-      const mockUser = {
-        name: 'wil',
-        email: 'a@a',
-        password: 'wil'
-      };
+    it('should log in a new user', () => {
       const mockDispatch = jest.fn();
-      const actionToDispatch = loginUser(mockUser)
+      const actionToDispatch = loginUser({});
       const mappedProps = mapDispatchToProps(mockDispatch);
-      mappedProps.login(mockUser)
-
+      mappedProps.login({});
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
 
-    it.skip('should dispatch alertUser action when alertUser is invoked', () => {
-      const mockMessage = { alert: 'Email has already been taken.' };
+    it('should call alert message if email or password incorrect', () => {
       const mockDispatch = jest.fn();
-      const actionToDispatch = alertUser(mockMessage);
+      const actionToDispatch = alertUser('');
       const mappedProps = mapDispatchToProps(mockDispatch);
-      mappedProps.alertUser(mockMessage);
-
+      mappedProps.alertUser('');
       expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
     });
-  });
+  })
 });
