@@ -4,17 +4,23 @@ import { API_KEY } from '../key';
 import { discoverMovies, fetchUserFavorites, addUserFavorite, removeUserFavorite, userSignUp, userLogIn } from './fetchApi';
 import { mockMovie, hanksCredits, cleanedHanksCredits } from './mockData';
 
-describe('fetchApi', () => {
-  let mockUrl;
+describe('fetchCurry', () => {
+  let database;
+
   beforeEach(() => {
-    mockUrl = 'bingo';
+    database = 'http://localhost:3000/api/users/';
   })
-  describe('discoverMovies', () => {
-    beforeEach(() => {
+
+  it('should return with data', async () => {
+    const mockUser = { email: 'tim@tim', password: 'password' };
+    const expectedUserData = { name: 'Tim', email: 'tim@tim', password: 'password', id: 1 }
+
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,
-        json: () => Promise.resolve( hanksCredits )
+      json: () => Promise.resolve( expectedUserData )
       }));
+    const result = await fetchCurry(database)()()()('POST')(mockUser);
+    expect(result).toEqual(expectedUserData);
     });
     
     it('should be invoked with correct params', async () => {
