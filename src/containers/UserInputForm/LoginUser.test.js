@@ -47,7 +47,7 @@ describe('LogInUser', () => {
       it('should set state when invoked', () => {
         const wrapper = shallow(<LogInUser />);
         let e = {target:{value:'foo', name:'email'}}
-
+        
         wrapper.instance().handleChange(e);
         expect(wrapper.state().email).toEqual('foo');
 
@@ -88,22 +88,44 @@ describe('LogInUser', () => {
       it('should fetch user favorites if log in fetch passes', async () =>{
         await wrapper.instance().handleSubmit(e);
         expect(updateFavorites).toHaveBeenCalled();
-    });
-
+      });
+  
       it('should log in user if fetch passes', async () =>{
         await wrapper.instance().handleSubmit(e);
         expect(login).toHaveBeenCalled();
       });
-    
+  
       it('should push user to new browser page of /user if fetch passes', async () =>{
         await wrapper.instance().handleSubmit(e);
         expect(history.push).toHaveBeenCalled();
-  });
+      });
     });
 
   })
 
   describe('mapDispatchToProps', () => {
+    it('should log in a user', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = loginUser({});
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.login({});
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
 
-  });
+    it('should call alert message if email or password incorrect', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = alertUser('');
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.alertUser('');
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('should update a user\'s favorites on log in', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = updateFavorites([]);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.updateFavorites([]);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  })
 });
