@@ -77,22 +77,23 @@ describe('fetchCurry', () => {
     });
   })
 
-      addUserFavorite(1, mockMovie);
-      expect(window.fetch).toHaveBeenCalledWith(...expected)
-    });
-  });
-  describe('userSignUp', () => {
-    it('should create a new user', async () => {
+  describe('fetchFavorites', () => {
+    it('should take a user id and fetch favorites from database', async () => {
+      const mockUrl =  "http://localhost:3000/api/users/13/favorites";
+      const payload = {
+        method: '',
+        body: JSON.stringify({}),
+        headers: {"Content-Type": "application/json"}
+      }
+      const expected = [mockUrl, payload];
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
         ok: true,
-        json: () => Promise.resolve({
-          id: 14
-        })
+        json: () => Promise.resolve( )
       }));
-
-      await userSignUp('wil', 'w@w', 'w');
-      expect(window.fetch).toHaveBeenCalled();
+      await fetchFavorites(13);
+      expect(window.fetch).toHaveBeenCalledWith(...expected);
     });
+  });
 
     it('should return alert object if email has already been taken', async () => {
       const mockUser = {
