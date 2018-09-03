@@ -1,13 +1,15 @@
 $blue: #3084de;
 $burntOrange: rgb(193, 117, 59);
+$mainYellow: #f9f14d;
+$mainGrn: #133f37;
 
 .NavBar {
   position: relative;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
-  align-items: center;
-  margin: 1rem;
+  align-self: flex-start;
+  padding-top: 1rem;
     h3 {
       color: #2d2d2d;
       margin: 0 0 0 0.4rem;
@@ -27,17 +29,71 @@ $burntOrange: rgb(193, 117, 59);
       text-decoration: none;
     }
     .favorites {
-      background: red;
+      background: #110c11;
     }
     .discover {
-      background: green;
+      background: #110c11;
     }
 }
 
 .NavLink {
-  width: 100%;
+  color: #f2f2f2;
   margin: 0 0.5rem;
+  text-decoration: none;
+  display: inline-block;
 }
+
+.login-input, .password-input {
+  width: 8rem;
+  height: 1rem;
+  margin-left: 2rem;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  padding: 5px 21px;
+  border: 1px solid #b7b7b7;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+  font: normal medium/normal Arial, Helvetica, sans-serif;
+  color: #110c11;
+  -o-text-overflow: clip;
+  text-overflow: clip;
+  background: rgba(252,252,252,1);
+  -webkit-box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
+  box-shadow: 2px 2px 2px 0 rgba(0,0,0,0.2) inset;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.66) ;
+  -webkit-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.login-button {
+ text-decoration: none;
+ background: none;
+ color: #f2f2f2;
+ border: none;
+}
+
+.login-input:hover {
+  border: 1px solid #a3a3a3;
+  background: rgba(255,255,255,1);
+  -webkit-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 100ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+.login-input:focus {
+  border: 1px solid #110c11;
+  -webkit-box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) inset;
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) inset;
+  -webkit-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+  -moz-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+  -o-transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+  transition: all 50ms cubic-bezier(0.42, 0, 0.58, 1);
+}
+
 
 .active {
   // background-color: blue;
@@ -97,24 +153,28 @@ $burntOrange: rgb(193, 117, 59);
 
 .signup-cont {
   align-self: center;
-  background: rgba(198, 203, 211, 0.946);
-  border: 0.2rem solid $blue;
+  background: $mainYellow;
+  border: 3px solid $mainGrn;
   border-radius: 0.2rem;
-  position: fixed;
-  top: 5rem;
+  color: $mainGrn;
+  left: 30%;
   margin: 0 auto;
   padding: 1rem;
+  position: fixed;
+  top: 20%;
   width: 25rem;
   z-index: 9999;
     h4 {
-      color: $blue;
+      color: $mainGrn;
       font-size: 1.4rem;
       margin: 0 0 1rem 0;
     }
     input {
-      display: block;
-      border-style: none;
+      background: #f9f5b3;
+      border: 3px solid $mainGrn;
       border-radius: 0.2rem;
+      color: #133f37;
+      display: block;
       font-size: 0.8rem;
       margin: 0.4rem auto;
       padding: 0.2rem;
@@ -122,17 +182,21 @@ $burntOrange: rgb(193, 117, 59);
       width: 60%;
     }
     button {
-      color: grey;
+      background: $mainGrn;
+      border: 0;
+      color: $mainYellow;
       cursor: pointer;
       font-size: 1rem;
       height: 1.5rem;
       width: 5rem;
     }
     button:hover {
-      color: $blue;
-      background-blend-mode: darken;
+      background: #e57e00;
     }
     .NavLink {
-      color: rgb(112, 146, 159);
+      color: #355053;
+    }
+    .NavLink:hover {
+      color: #e57e00;
     }
 }

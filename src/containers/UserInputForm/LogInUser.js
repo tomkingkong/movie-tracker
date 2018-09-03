@@ -49,6 +49,7 @@ export class LogInUser extends Component {
             placeholder='Email'
             value={email}
             name='email'
+            className='login-input'
             onChange={this.handleChange}
           />
           <input
@@ -56,9 +57,10 @@ export class LogInUser extends Component {
             placeholder='Password'
             value={password}
             name='password'
+            className='login-input'
             onChange={this.handleChange}
           />
-          <button>Login</button>
+          <button className="login-button">Login</button>
           <NavLink className="NavLink" to='/signup' onClick={() => alertUser('')}>
             Sign Up
           </NavLink>
