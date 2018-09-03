@@ -1,33 +1,36 @@
 import React from "react";
 import { MemoryRouter } from "react-router";
-import { shallow, mount, render } from "enzyme";
+import { shallow, render } from "enzyme";
 
-import { ContentRoute } from ".";
+import { displayHanksMovies } from '../../actions';
+import { ContentRoute, mapStateToProps, mapDispatchToProps } from ".";
 
 describe('ContentRoute container', () => {
   let wrapper;
-  let displayHanksMovies;
+  let mockFn;
   let movies;
   let favorites;
 
   beforeEach(() => {
-    displayHanksMovies = jest.fn();
+    mockFn = jest.fn();
+    movies = [];
+    favorites = [];
   })
 
   it('should match snapshot with the / path', () =>{
     wrapper = shallow(
       <ContentRoute 
-        displayHanksMovies={displayHanksMovies} 
-        movies={[]}
-        favorites={[]}
+        displayHanksMovies={mockFn} 
+        movies={movies}
+        favorites={favorites}
       />);
 
     render(
       <MemoryRouter initialEntries={['/']}>
-        <ContentRoute
-          displayHanksMovies={displayHanksMovies}
-          movies={[]}
-          favorites={[]}
+        <ContentRoute 
+          displayHanksMovies={mockFn} 
+          movies={movies}
+          favorites={favorites}
         />
       </MemoryRouter>
     ); 
@@ -37,24 +40,24 @@ describe('ContentRoute container', () => {
   it('should match snapshot with the /favorites path', () =>{
     wrapper = shallow(
       <ContentRoute 
-        displayHanksMovies={displayHanksMovies} 
-        movies={[]}
-        favorites={[]}
+        displayHanksMovies={mockFn} 
+        movies={movies}
+        favorites={favorites}
       />);
 
     render(
       <MemoryRouter initialEntries={['/favorites']}>
         <ContentRoute
-          displayHanksMovies={displayHanksMovies}
-          movies={[]}
-          favorites={[]}
+          displayHanksMovies={mockFn} 
+          movies={movies}
+          favorites={favorites}
         />
       </MemoryRouter>
     ); 
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should call displayHanksMovies on componentDidMount', () =>{
+  it('should call displayHanksMovies on componentDidMount', async () =>{
     let mockHanksMovies = {cast:[]}
     let mockFn = jest.fn().mockImplementation(() => (mockHanksMovies))
     window.fetch = jest.fn().mockImplementation(() => {
@@ -68,16 +71,29 @@ describe('ContentRoute container', () => {
         movies={[]}
         favorites={[]}
       />);
-    render(
-      <MemoryRouter initialEntries={['/']}>
-        <ContentRoute
-          displayHanksMovies={mockFn}
-          movies={[]}
-          favorites={[]}
-        />
-      </MemoryRouter>
-    ); 
-    wrapper.instance().componentDidMount();
+    await wrapper.instance().componentDidMount();
     expect(mockFn).toHaveBeenCalled();
   });
+
+  describe('mapStateToProps', () => {
+    it('should have access to movies and user\'s favorites arrays', () => {
+      const mockStore = {
+        favorites: [],
+        movies: []
+      }
+      const expected = {...mockStore}
+      const result = mapStateToProps(mockStore);
+      expect(result).toEqual(expected);
+    });
+  })
+
+  describe('mapDispatchToProps', () => {
+    it('should display Tom Hanks movies', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = displayHanksMovies([]);
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.displayHanksMovies([]);
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  })
 })
