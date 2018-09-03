@@ -1,6 +1,7 @@
 html {
-  background-image: url("../../images/concrete.jpg");
-  background-repeat: repeat; }
+  background-image: url("../../images/brick.jpg");
+  background-repeat: repeat; 
+}
 
 .App {
   text-align: center; }
@@ -28,4 +29,6 @@ body {
   text-transform: uppercase;
   font-size: 2.5rem;
   text-overflow: clip;
-  letter-spacing: 3px; }
+  letter-spacing: 3px; 
+}
+

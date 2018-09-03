@@ -1,7 +1,7 @@
 $mainYellow: #f9f14d;
 
 html {
-  background-image: url('../../images/concrete.jpg');
+  background-image: url('../../images/brick.jpg');
   background-repeat: repeat;
 }
 .App {
@@ -34,8 +34,7 @@ body {
   text-align: left;
   text-transform: uppercase;
   font-size: 2.5rem;
-  // -o-text-overflow: clip;
   text-overflow: clip;
   letter-spacing: 3px;
-  // text-shadow: 1px 1px 0 rgb(238,238,238) , 6px 6px 0 rgb(112,112,112) ;
 }
+
