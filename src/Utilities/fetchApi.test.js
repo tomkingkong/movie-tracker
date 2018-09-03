@@ -32,22 +32,16 @@ describe('fetchCurry', () => {
     expect(result).toEqual(false);
     });
 
-    it('should return an object if status code ok', async () => {
+  describe('fetchHanksMovies', () => {
+    it('should return Tom Hanks movies', async () => {
       const expected = cleanedHanksCredits;
-
-      await expect(discoverMovies()).resolves.toEqual(expected)
-    });
-    })
-  });
-
-  describe('fetchUserFavorites', () => {
-    beforeEach(() => {
       window.fetch = jest.fn().mockImplementation(() => Promise.resolve({
-        json: () => Promise.resolve(hanksCredits)
+        ok: true,
+        json: () => Promise.resolve( hanksCredits )
       }));
+      const result = await fetchHanksMovies();
+      expect(result).toEqual(expected);
     });
-    it('should be invoked with correct params', async () => {
-      const expected = `http://localhost:3000/api/users/1/favorites`;
 
       await fetchUserFavorites(1);
 
