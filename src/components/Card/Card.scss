@@ -71,4 +71,22 @@
   top: 0;
   right: 0;
   z-index: 999;
+  height: 2rem;
+  width: 2rem;
 }
+
+.after-star {
+  background: url("../../images/star2.png") no-repeat center center;
+  // height: .5rem;
+  // width: .5rem; 
+  background-size: 50% 50%;
+  // background-color: #e97223;
+  background-color: #76bab7;
+}
+
+.before-star {
+  background: url("../../images/star.png") no-repeat center center;
+  background-color: #f8f8f8;
+  background-size: 50% 50%;
+}
+
