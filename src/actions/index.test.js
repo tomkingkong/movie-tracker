@@ -9,7 +9,7 @@ describe('actions', () => {
     };
     const result = actions.displayHanksMovies(movies);
     expect(result).toEqual(expectedAction);
-  })
+  });
 
   it('should return a type of UPDATE_FAVORITES', () => {
     const movies = [{}];
@@ -19,7 +19,7 @@ describe('actions', () => {
     };
     const result = actions.updateFavorites(movies);
     expect(result).toEqual(expectedAction);
-  })
+  });
 
   it('should return a type of DISPLAY_FAVORITES with movies', () => {
     const movies = [{}];
@@ -29,7 +29,7 @@ describe('actions', () => {
     };
     const result = actions.displayFavorites(movies);
     expect(result).toEqual(expectedAction);
-  })
+  });
 
   it('should have a type of ADD_FAVORITE', () => {
     const movie = {title: 'Big'};
@@ -77,5 +77,4 @@ describe('actions', () => {
     const result = actions.alertUser(message);
     expect(result).toEqual(expectedAction);
   });
-
 });

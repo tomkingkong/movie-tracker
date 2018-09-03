@@ -1,35 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`FormRoute component should match snapshot with /login path 1`] = `
-<Switch>
-  <Route
-    exact={true}
-    path="/"
-    render={[Function]}
-  />
-  <Route
-    exact={true}
-    path="/login"
-  />
-  <Route
-    component={[Function]}
-    exact={true}
-    path="/signup"
-  />
-  <Route
-    component={[Function]}
-    exact={true}
-    path="/:user_id"
-  />
-</Switch>
-`;
-
 exports[`FormRoute component should match snapshot with default path 1`] = `
 <Switch>
   <Route
+    component={[Function]}
     exact={true}
     path="/"
-    render={[Function]}
   />
   <Route
     component={[Function]}

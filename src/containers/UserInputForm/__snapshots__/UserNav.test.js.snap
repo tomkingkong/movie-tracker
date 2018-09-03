@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserNav Component should match snapshot 1`] = `
+<div
+  className="NavBar"
+>
+  <p
+    className="tooltip"
+    data-tooltip="Select your favorite Tom Hanks movies!"
+  >
+    ?
+  </p>
+  <h3>
+    tim
+  </h3>
+  <Link
+    className="favorites btn"
+    replace={false}
+    to="/favorites"
+  >
+    Favorites ★
+  </Link>
+  <Link
+    className="discover btn"
+    replace={false}
+    to="/user"
+  >
+    Discover Hanks Movies
+  </Link>
+  <Link
+    replace={true}
+    to="/"
+  >
+    <button
+      onClick={[Function]}
+    >
+      Log Out
+    </button>
+  </Link>
+</div>
+`;
