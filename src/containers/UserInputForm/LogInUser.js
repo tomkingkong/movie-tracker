@@ -3,7 +3,7 @@ import { NavLink, withRouter } from 'react-router-dom';
 import {connect} from 'react-redux';
 
 import './Navigation.css';
-import { userLogIn, fetchUserFavorites } from '../../Utilities/fetchApi';
+import { fetchFavorites, logInUserFetch } from '../../Utilities/fetchApi';
 import { loginUser, updateFavorites, alertUser } from '../../actions';
 import Alert from '../Alert';
  
@@ -26,12 +26,12 @@ export class LogInUser extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const { login, history, updateFavorites, alertUser } = this.props;
-    const userInfo = await userLogIn(this.state);
-    if (userInfo.alert) {
-      return alertUser(userInfo.alert)
+    const userInfo = await logInUserFetch(this.state);
+    if (!userInfo) {
+      return alertUser('Email and/or Password do not match.');
     }
-    const userFavorites = await fetchUserFavorites(userInfo.data.id);
-    updateFavorites(userFavorites.data);
+    const userFavorites = await fetchFavorites(userInfo.data.id);
+    updateFavorites(userFavorites);
     login(userInfo.data);
     history.push('/user');
   }
@@ -68,14 +68,10 @@ export class LogInUser extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({ 
-  currentUser: state.user 
-})
-
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   login: (user) => dispatch(loginUser(user)),
   updateFavorites: (movies) => dispatch(updateFavorites(movies)),
   alertUser: (message) => dispatch(alertUser(message))
 })
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(LogInUser));
+export default withRouter(connect(null, mapDispatchToProps)(LogInUser));

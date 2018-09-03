@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 import './Navigation.css';
-import { userSignUp } from '../../Utilities/fetchApi';
+import { signUpUserFetch } from '../../Utilities/fetchApi';
 import { loginUser, alertUser } from '../../actions';
 import Alert from '../../containers/Alert';
  
@@ -27,9 +27,9 @@ export class SignUpUser extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const { login, history, alertUser } = this.props;
-    const userInfo = await userSignUp(this.state);
-    if (userInfo.alert) {
-      return alertUser(userInfo.alert)
+    const userInfo = await signUpUserFetch(this.state);
+    if (!userInfo) {
+      return alertUser('Email has already been taken.')
     }
     const newUser = {...this.state, id: userInfo.id}
     login(newUser);
