@@ -60,10 +60,10 @@ export class LogInUser extends Component {
             onChange={this.handleChange}
           />
           <button className='login-btn'>Login</button>
-          <NavLink className="NavLink" to='/signup' onClick={() => alertUser('')}>
-            Sign Up
-          </NavLink>
         </form>
+        <NavLink className="login-link" to='/signup' onClick={() => alertUser('')}>
+          Sign Up
+        </NavLink>
         <Alert />
       </div>
     )
