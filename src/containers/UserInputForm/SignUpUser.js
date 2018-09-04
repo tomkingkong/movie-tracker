@@ -43,7 +43,10 @@ export class SignUpUser extends Component {
       <div className="signup-wrapper">
         <div className="signup-cont">
           <h4>Sign Up to save your favorite Hanks movies!</h4>
-          <form onSubmit={this.handleSubmit}>
+          <form 
+            className="signup-form"
+            onSubmit={this.handleSubmit}
+          >
             <input
               className='login-name'
               required
