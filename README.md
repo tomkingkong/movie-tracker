@@ -16,9 +16,7 @@ Collaborators include [Chris Boyen](https://github.com/chrisboylen "Chris Boyen"
 
 ## Screenshots
 
-<img src="https://raw.githubusercontent.com/tomkingkong/movie-tracker/master/public/movietracker1.gif" width="600px" />
-
-<img src="movie-tracker/src/images/hankstracker1.png" />
-<img src="movie-tracker/src/images/hankstracker2.png" />
+<img src="https://raw.githubusercontent.com/tomkingkong/movie-tracker/master/src/images/hankstracker1.png" />
+<img src="https://raw.githubusercontent.com/tomkingkong/movie-tracker/master/src/images/hankstracker2.png" />
 
 
