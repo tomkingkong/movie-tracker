@@ -21,19 +21,19 @@
   z-index: -10;
 }
 
-// .Card h1 {
-//   color: #fff;
-//   background: #23282dcb;
-//   font-size: 150%;
-//   position: absolute;
-//   top: 25rem;
-//   padding: 1rem;
-//   margin: 0;
-//   width: inherit;
-//   z-index: -99;
-//   text-align: center;
-//   transition: all 0.25s linear;
-// }
+.Card h1 {
+  color: #fff;
+  background: #23282dcb;
+  font-size: 150%;
+  position: absolute;
+  top: 25rem;
+  padding: 1rem;
+  margin: 0;
+  width: inherit;
+  z-index: -99;
+  text-align: center;
+  transition: all 0.25s linear;
+}
 
 .description {
   display: none;
@@ -69,16 +69,16 @@
 }
 
 .Card button {
+  height: 2rem;
   position: absolute;
   top: 0;
   right: 0;
-  z-index: 999;
-  height: 2rem;
   width: 2rem;
+  z-index: 999;
 }
 
 .after-star {
-  background: url("../../images/star2.png") no-repeat center center; 
+  background: url("../../images/star2.png") no-repeat center center;
   background-size: 50% 50%;
   background-color: #76bab7;
 }
@@ -88,4 +88,3 @@
   background-color: #f8f8f8;
   background-size: 50% 50%;
 }
-

@@ -54,13 +54,11 @@ export class Card extends Component {
           <p>{overview}</p>
         </div>
         <img src={poster_path} />
-        
-      
-
+        <h1>{title}</h1>
         <button 
-          onClick={this.toggleFavorite}
           className={favorite ? 'after-star' : 'before-star'}
-        ></button>
+          onClick={this.toggleFavorite}>
+        </button>
       </article>
     );
   }

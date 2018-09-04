@@ -62,11 +62,11 @@ export class LogInUser extends Component {
             className='login-input'
             onChange={this.handleChange}
           />
-          <button className='login-btn'>Login</button>>>>>>>> master
-          <NavLink className="NavLink" to='/signup' onClick={() => alertUser('')}>
-            Sign Up
-          </NavLink>
+          <button className='login-btn'>Login</button>
         </form>
+        <NavLink className="login-link" to='/signup' onClick={() => alertUser('')}>
+          Sign Up
+        </NavLink>
         <Alert />
       </div>
     );
