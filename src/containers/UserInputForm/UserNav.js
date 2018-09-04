@@ -13,7 +13,7 @@ export const UserNav = ({ user, clearFavorites, logout }) => {
   }
 
   return (
-    <div className="NavBar">
+    <div className="user-nav">
       <p className="tooltip" data-tooltip="Select your favorite Tom Hanks movies!">?</p>
       <h3>{user.name}</h3>
       <Link to="/favorites" className="favorites btn">
