@@ -2,7 +2,7 @@
 
 exports[`UserNav Component should match snapshot 1`] = `
 <div
-  className="NavBar"
+  className="user-nav"
 >
   <p
     className="tooltip"
@@ -10,7 +10,9 @@ exports[`UserNav Component should match snapshot 1`] = `
   >
     ?
   </p>
-  <h3>
+  <h3
+    className="user-name"
+  >
     tim
   </h3>
   <Link
@@ -32,6 +34,7 @@ exports[`UserNav Component should match snapshot 1`] = `
     to="/"
   >
     <button
+      className="log-out"
       onClick={[Function]}
     >
       Log Out

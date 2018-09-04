@@ -39,7 +39,7 @@ describe('actions', () => {
     };
     const result = actions.addFavorite(movie);
     expect(result).toEqual(expectedAction);
-  })
+  });
 
   it('should have a type of REMOVE_FAVORITE', () => {
     const expectedAction = {
@@ -48,7 +48,7 @@ describe('actions', () => {
     };
     const result = actions.removeFavorite(5);
     expect(result).toEqual(expectedAction);
-  })
+  });
 
   it('should have a type of LOGIN_USER', () => {
     const user = { name: 'Sam', email: 'sam@gmail.com', password: 'sam123' };
@@ -57,15 +57,15 @@ describe('actions', () => {
       user: { name: 'Sam', email: 'sam@gmail.com', password: 'sam123' }
     };
     const result = actions.loginUser(user);
-    expect(result).toEqual(expectedAction)
-  })
+    expect(result).toEqual(expectedAction);
+  });
 
   it('should have a type of LOGOUT_USER', () => {
     const expectedAction = {
       type: 'LOGOUT_USER'
     };
     const result = actions.logoutUser();
-    expect(result).toEqual(expectedAction)
+    expect(result).toEqual(expectedAction);
   });
 
   it('should have type of ALERT_USER', () => {
@@ -73,7 +73,7 @@ describe('actions', () => {
     const expectedAction = {
       type: 'ALERT_USER',
       message
-    }
+    };
     const result = actions.alertUser(message);
     expect(result).toEqual(expectedAction);
   });

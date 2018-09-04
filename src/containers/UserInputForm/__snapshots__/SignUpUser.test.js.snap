@@ -1,53 +1,58 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SignUpUser SignUpUser Component should match snapshot 1`] = `
+exports[`SignUpUser Component should match snapshot 1`] = `
 <div
-  className="signup-cont"
+  className="signup-wrapper"
 >
-  <h4>
-    Sign Up to save your favorite Hanks movies!
-  </h4>
-  <form
-    onSubmit={[Function]}
+  <div
+    className="signup-cont"
   >
-    <input
-      className="name-input"
-      name="name"
-      onChange={[Function]}
-      placeholder="User Name"
-      required={true}
-      value=""
-    />
-    <input
-      className="email-input"
-      name="email"
-      onChange={[Function]}
-      placeholder="Email"
-      required={true}
-      type="email"
-      value=""
-    />
-    <input
-      className="password-input"
-      name="password"
-      onChange={[Function]}
-      placeholder="Password"
-      required={true}
-      value=""
-    />
-    <button>
-      Sign Up
-    </button>
-  </form>
-  <Connect(Component) />
-  <NavLink
-    activeClassName="active"
-    aria-current="page"
-    className="NavLink"
-    onClick={[Function]}
-    to="/login"
-  >
-    If you already have an account, Log In here!
-  </NavLink>
+    <h4>
+      Sign Up to save your favorite Hanks movies!
+    </h4>
+    <form
+      className="signup-form"
+      onSubmit={[Function]}
+    >
+      <input
+        className="login-name"
+        name="name"
+        onChange={[Function]}
+        placeholder="User Name"
+        required={true}
+        value=""
+      />
+      <input
+        className="login-email"
+        name="email"
+        onChange={[Function]}
+        placeholder="Email"
+        required={true}
+        type="email"
+        value=""
+      />
+      <input
+        className="login-password"
+        name="password"
+        onChange={[Function]}
+        placeholder="Password"
+        required={true}
+        value=""
+      />
+      <button>
+        Sign Up
+      </button>
+    </form>
+    <Connect(Component) />
+    <NavLink
+      activeClassName="active"
+      aria-current="page"
+      className="NavLink"
+      onClick={[Function]}
+      to="/login"
+    >
+      If you already have an account, Log In here!
+    </NavLink>
+  </div>
 </div>
 `;

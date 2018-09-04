@@ -10,7 +10,7 @@ exports[`matches snapshot 1`] = `
     <h1
       className="title"
     >
-      Hanks Movies
+      HANKY PANKY
     </h1>
     <withRouter() />
   </header>

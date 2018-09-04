@@ -45,7 +45,7 @@ export class Card extends Component {
   }
 
   render() {
-    const { title, poster_path, overview } = this.props.movie;
+    const { poster_path } = this.props.movie;
     const { toggleInfo, favorite } = this.state;
     return (
       <article className={`Card  ${toggleInfo ? "show" : "hide"}`} onClick={this.toggleInfo}>

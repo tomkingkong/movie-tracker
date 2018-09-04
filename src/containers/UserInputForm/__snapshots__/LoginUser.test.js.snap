@@ -8,6 +8,7 @@ exports[`LogInUser LogInUser Component should match snapshot 1`] = `
     onSubmit={[Function]}
   >
     <input
+      className="email-input"
       name="email"
       onChange={[Function]}
       placeholder="Email"
@@ -16,25 +17,28 @@ exports[`LogInUser LogInUser Component should match snapshot 1`] = `
       value=""
     />
     <input
+      className="password-input"
       name="password"
       onChange={[Function]}
       placeholder="Password"
       required={true}
       value=""
     />
-    <button>
+    <button
+      className="login-btn"
+    >
       Login
     </button>
-    <NavLink
-      activeClassName="active"
-      aria-current="page"
-      className="NavLink"
-      onClick={[Function]}
-      to="/signup"
-    >
-      Sign Up
-    </NavLink>
   </form>
+  <NavLink
+    activeClassName="active"
+    aria-current="page"
+    className="login-link"
+    onClick={[Function]}
+    to="/signup"
+  >
+    Sign Up
+  </NavLink>
   <Connect(Component) />
 </div>
 `;
