@@ -1,29 +1,29 @@
-$mainYellow: #f9f14d;
+$mainOrange: #E97223;
+$headerLight: rgb(255, 249, 220);
 
 html {
   background-image: url('../../images/brick.jpg');
   background-repeat: repeat;
-}
-.App {
-  text-align: center;
 }
 
 body {
   margin: 0;
 }
 
-.title {
-  -webkit-box-sizing: content-box;
-  -moz-box-sizing: content-box;
-  box-sizing: content-box;
-  margin: 0 auto;
-  border: none;
-  font: normal 82px/normal "Anton", Helvetica, sans-serif;
-  color: rgb(112, 112, 112);
-  text-align: left;
-  text-transform: uppercase;
-  font-size: 2.5rem;
-  text-overflow: clip;
-  letter-spacing: 3px;
+.header {
+  background-color: rgba(26, 33, 34, 0.8);
+  box-shadow: 0px 16px 57px -2px rgba(26, 33, 34, 1);
+  padding: 0.5rem 0 0.5rem 0;
+    h1 {
+      color: $headerLight;
+      padding: 0.1rem 0 0 5%;
+      background: $mainOrange;
+      font-family: 'Satisfy';
+      font-size: 4rem;
+      font-weight: 800;
+      margin: 2rem 0 0 0;
+    }
 }
+
+
 
