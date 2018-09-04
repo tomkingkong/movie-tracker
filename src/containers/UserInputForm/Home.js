@@ -9,5 +9,5 @@ export const Home = () => {
       <NavLink className="main-link" to='/login'>Login</NavLink>
       <NavLink className="main-link signup" to='/signup'>Sign Up</NavLink>
     </div>
-  )
-}
+  );
+};

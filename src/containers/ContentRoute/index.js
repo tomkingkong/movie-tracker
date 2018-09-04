@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Route, withRouter, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-import { discoverMovies } from '../../Utilities/fetchApi';
+import { fetchHanksMovies } from '../../Utilities/fetchApi';
 import { displayHanksMovies } from '../../actions';
 import MoviesContainer from '../../components/MoviesContainer/';
 
@@ -10,7 +11,7 @@ export class ContentRoute extends Component {
   
   async componentDidMount() {
     const { displayHanksMovies } = this.props;
-    const hanksMovies = await discoverMovies();
+    const hanksMovies = await fetchHanksMovies();
     displayHanksMovies(hanksMovies);
   }
 
@@ -21,17 +22,24 @@ export class ContentRoute extends Component {
         <Route exact path='/favorites' render={({history}) => (<MoviesContainer movies={favorites} history={history}/>)} />
         <Route path='/' render={({history}) => (<MoviesContainer movies={movies} history={history}/>)} />
       </Switch>
-    )
+    );
   }
 }
 
-const mapStateToProps = ({ movies, favorites }) => ({
+const { array, func } = PropTypes;
+ContentRoute.propTypes = {
+  movies: array,
+  favorites: array,
+  displayHanksMovies: func
+};
+
+export const mapStateToProps = ({ movies, favorites }) => ({
   movies,
   favorites
-})
+});
 
-const mapDispatchToProps = (dispatch) => ({
+export const mapDispatchToProps = (dispatch) => ({
   displayHanksMovies: (movies) => dispatch(displayHanksMovies(movies))
-})
+});
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ContentRoute));

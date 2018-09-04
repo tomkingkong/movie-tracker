@@ -1,16 +1,14 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import { createMockStore } from 'redux-test-utils';
 
-import { Card } from '.';
+import { removeFavorite, addFavorite } from '../../actions';
+import { Card, mapStateToProps, mapDispatchToProps } from '.';
 
 describe('Card component', () => {
   let mockHistory;
-  let testState;
   let mockMovie;
   let mockUser;
   let wrapper;
-  let store;
   let mockRemoveFavorite;
   let mockAddFavorite;
   let mockFn;
@@ -18,12 +16,12 @@ describe('Card component', () => {
 
   beforeEach(() => {
     window.fetch = jest.fn().mockImplementation(() => {
-      Promise.resolve({ json:() => Promise.resolve({})})
-    })
+      return Promise.resolve({ json:() => Promise.resolve({})});
+    });
     mockRemoveFavorite = jest.fn();
     mockAddFavorite = jest.fn();
-    mockFn = jest.fn()
-    e = {stopPropagation:jest.fn()}
+    mockFn = jest.fn();
+    e = {stopPropagation:jest.fn()};
     mockMovie = {
       title: 'title', 
       poster_path: 'words.jpg', 
@@ -31,12 +29,10 @@ describe('Card component', () => {
       overview: 'overview', 
       release_date: 'release',
       movie_id: 35
-    }
-    mockUser = { id: 1, name:'tim' }
-    mockHistory = { push: jest.fn().mockImplementation(() => {}) }
-    testState = { movies: [mockMovie], favorites: [], user: {mockUser} };
-    store = createMockStore(testState);
-  })
+    };
+    mockUser = { id: 1, name:'tim' };
+    mockHistory = { push: jest.fn().mockImplementation(() => {}) };
+  });
 
   it('should match snapshot with props passed', () => {
     wrapper = shallow(
@@ -69,6 +65,18 @@ describe('Card component', () => {
       />);
     wrapper.instance().componentDidMount();
     expect(wrapper.state().favorite).toEqual(true);
+  });
+
+  it('should not toggle favorite to true on mount if matching a favorite movie', async () => {
+    wrapper = shallow(
+      <Card 
+        movie={mockMovie}
+        favorites={[]}
+        history={mockHistory} 
+        key={mockMovie.title+1}  
+      />);
+    wrapper.instance().componentDidMount();
+    expect(wrapper.state().favorite).toEqual(false);
   });
 
   it('should switch toggleinfo to true on click', () => {
@@ -159,8 +167,8 @@ describe('Card component', () => {
   });
 
   it('should push /signup to history if user does not exist', () => {
-    mockUser = { name: undefined }
-    mockHistory = { push: jest.fn().mockImplementation(() => ({location:'/signup'}))}
+    mockUser = { name: undefined };
+    mockHistory = { push: jest.fn().mockImplementation(() => ({location:'/signup'}))};
     wrapper = shallow(
       <Card 
         favorites={[mockMovie]}
@@ -174,4 +182,38 @@ describe('Card component', () => {
     wrapper.find('button').simulate('click', e);
     expect(mockHistory.push).toHaveBeenCalled();
   });
-})
+
+  describe('mapStateToProps', () => {
+    it('should have access to user and user\'s favorites array', () => {
+      const name = 'Tim';
+      const id = 2;
+      const email = 'foo@barr';
+      const password = 'oops';
+      const mockStore = {
+        user: {name, id, email, password},
+        favorites: []
+      };
+      const expected = {...mockStore};
+      const result = mapStateToProps(mockStore);
+      expect(result).toEqual(expected);
+    });
+  });
+
+  describe('mapDispatchToProps', () => {
+    it('should remove movie from user\'s favorites', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = removeFavorite({});
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.removeFavoriteFromStore({});
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+
+    it('should add favorite movie to user\'s favorites', () => {
+      const mockDispatch = jest.fn();
+      const actionToDispatch = addFavorite({});
+      const mappedProps = mapDispatchToProps(mockDispatch);
+      mappedProps.addFavoriteToStore({});
+      expect(mockDispatch).toHaveBeenCalledWith(actionToDispatch);
+    });
+  });
+});

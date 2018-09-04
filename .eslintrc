@@ -27,7 +27,6 @@
     "brace-style": ["error", "1tbs", {
       "allowSingleLine": true
     }],
-    "camelcase": "warn",
     "comma-dangle": ["error", "never"],
     "comma-spacing": ["error", {
       "before": false,
@@ -43,10 +42,8 @@
       "before": true,
       "after": true
     }],
-    "max-len": ["warn", 80],
     "no-duplicate-imports": "error",
-    "id-length": "error",
-    "id-blacklist": ["error", "err", "e", "cb", "callback", "payload", "obj", "arr"],
+    "id-blacklist": ["error", "err", "cb", "callback", "payload", "obj", "arr"],
     "max-depth": ["warn", 4]
   },
   "globals": {

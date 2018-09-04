@@ -1,20 +1,21 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import './Navigation.css';
-import { userSignUp } from '../../Utilities/fetchApi';
+import { signUpUserFetch } from '../../Utilities/fetchApi';
 import { loginUser, alertUser } from '../../actions';
 import Alert from '../../containers/Alert';
  
 export class SignUpUser extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       email: '',
       password: '',
       name: ''
-    }
+    };
   }
 
   handleChange = (e) => {
@@ -27,13 +28,13 @@ export class SignUpUser extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     const { login, history, alertUser } = this.props;
-    const userInfo = await userSignUp(this.state);
-    if (userInfo.alert) {
-      return alertUser(userInfo.alert)
+    const userInfo = await signUpUserFetch(this.state);
+    if (!userInfo) {
+      return alertUser('Email has already been taken.');
     }
-    const newUser = {...this.state, id: userInfo.id}
+    const newUser = {...this.state, id: userInfo.id};
     login(newUser);
-    history.push('/user')
+    history.push('/user');
   }
 
   render() {
@@ -80,13 +81,19 @@ export class SignUpUser extends Component {
           </NavLink>
         </div>
       </div>
-    )
+    );
   }
 }
+
+const { func } = PropTypes;
+SignUpUser.propTypes = {
+  login: func,
+  alertUser: func
+};
 
 export const mapDispatchToProps = (dispatch) => ({
   login: (user) => dispatch(loginUser(user)),
   alertUser: (message) => dispatch(alertUser(message))
-})
+});
 
 export default connect(null, mapDispatchToProps)(SignUpUser);

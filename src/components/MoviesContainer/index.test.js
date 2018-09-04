@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import MoviesContainer from '.';
+import { MoviesContainer } from '.';
 
 describe('MoviesContainer component', () => {
   it('should match snapshot', () => {
@@ -11,13 +11,13 @@ describe('MoviesContainer component', () => {
 
   it('should match snapshot with props', () => {
     const movies = [{}];
-    const history = {}
+    const history = {};
     const wrapper = shallow(<MoviesContainer movies={movies} history={history} />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('should display loading gif if no movies to display', () => {
-    const movies = undefined;
+    const movies = [];
     const history = {};
     const wrapper = shallow(<MoviesContainer movies={movies} history={history} />);
     expect(wrapper).toMatchSnapshot();
