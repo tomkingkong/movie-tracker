@@ -49,12 +49,7 @@ export class Card extends Component {
     const { toggleInfo, favorite } = this.state;
     return (
       <article className={`Card  ${toggleInfo ? "show" : "hide"}`} onClick={this.toggleInfo}>
-        <div className="description">
-          <h2>{title}</h2>
-          <p>{overview}</p>
-        </div>
         <img src={poster_path} />
-        <h1>{title}</h1>
         <button 
           className={favorite ? 'after-star' : 'before-star'}
           onClick={this.toggleFavorite}>

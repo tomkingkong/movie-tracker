@@ -1,23 +1,19 @@
 html {
   background-image: url("../../images/brick.jpg");
-  background-repeat: repeat; 
-}
+  background-repeat: repeat; }
 
 body {
-  margin: 0; 
-}
+  margin: 0; }
 
 .header {
   background-color: rgba(26, 33, 34, 0.8);
   box-shadow: 0px 16px 57px -2px #1a2122;
-  padding: 0.5rem 0 0.5rem 0; 
-  h1 {
+  padding: 0.5rem 0 0.5rem 0; }
+  .header h1 {
     color: #fff9dc;
     padding: 0.1rem 0 0 5%;
     background: #E97223;
     font-family: 'Satisfy';
     font-size: 4rem;
     font-weight: 800;
-    margin: 2rem 0 0 0; 
-  }
-}
+    margin: 2rem 0 0 0; }
