@@ -7,13 +7,6 @@ Using Postgres as a backend, we set up a separate client-side application (use c
 
 Collaborators include [Chris Boyen](https://github.com/chrisboylen "Chris Boyen"), [Tom King](https://github.com/"tomkingkong") and [Megan Haubelt](https://github.com/Haub "Megan Haubelt").
 
-## Steps to run App
-
-* $ git clone https://github.com/tomkingkong/movie-tracker
-* $ cd movie-tracker
-* $ npm i
-* $ npm start
-
 ## Screenshots
 
 <img src="https://raw.githubusercontent.com/tomkingkong/movie-tracker/master/src/images/hankstracker1.png" />
