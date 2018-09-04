@@ -32,11 +32,6 @@
   transition: all 0.25s linear;
 }
 
-// .Card:hover h1 {
-//   top: 10rem;
-//   bottom: -2rem;
-// }
-
 .description {
   display: none;
   color: #000;
@@ -67,8 +62,22 @@
 }
 
 .Card button {
+  height: 2rem;
   position: absolute;
   top: 0;
   right: 0;
+  width: 2rem;
   z-index: 999;
+}
+
+.after-star {
+  background: url("../../images/star2.png") no-repeat center center;
+  background-size: 50% 50%;
+  background-color: #76bab7;
+}
+
+.before-star {
+  background: url("../../images/star.png") no-repeat center center;
+  background-color: #f8f8f8;
+  background-size: 50% 50%;
 }
