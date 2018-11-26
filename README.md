@@ -11,9 +11,9 @@ Using Postgres as a backend, we set up a separate client-side application (use c
 [Megan Haubelt](https://github.com/Haub "Megan Haubelt")
 
 ### Tech Used
-React
-Redux
-Router
+React  
+Redux  
+Router  
 Jest/Enzyme
 
 ## Projeict Setup
